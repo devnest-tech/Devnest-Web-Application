@@ -1,0 +1,76 @@
+{
+  "blogs": [
+    {
+      "id": 1,
+      "title": "Getting Started with Machine Learning: A Beginner's Guide",
+      "slug": "getting-started-ml",
+      "author": "Priya Sharma",
+      "date": "2025-10-20",
+      "category": "AI/ML",
+      "thumbnail": "🤖",
+      "excerpt": "Learn the fundamentals of machine learning and discover why it's revolutionizing technology.",
+      "content": "Machine learning is transforming industries across the globe. In this comprehensive guide, we'll explore...",
+      "readTime": "8 min read"
+    },
+    {
+      "id": 2,
+      "title": "Web Development Trends in 2025",
+      "slug": "web-dev-trends-2025",
+      "author": "Arjun Patel",
+      "date": "2025-10-18",
+      "category": "Web Development",
+      "thumbnail": "🌐",
+      "excerpt": "Explore the latest trends, frameworks, and best practices shaping modern web development.",
+      "content": "The web development landscape is constantly evolving. Let's dive into the trends that are defining...",
+      "readTime": "10 min read"
+    },
+    {
+      "id": 3,
+      "title": "Cybersecurity: Protecting Your Digital Life",
+      "slug": "cybersecurity-protection",
+      "author": "Neha Gupta",
+      "date": "2025-10-15",
+      "category": "Cybersecurity",
+      "thumbnail": "🔒",
+      "excerpt": "Essential tips and practices to keep your digital assets secure in today's threat landscape.",
+      "content": "Cybersecurity threats are evolving faster than ever. Here are the top strategies to protect...",
+      "readTime": "12 min read"
+    },
+    {
+      "id": 4,
+      "title": "Cloud Computing 101: AWS, Azure & GCP Compared",
+      "slug": "cloud-computing-101",
+      "author": "Rahul Verma",
+      "date": "2025-10-10",
+      "category": "Cloud Computing",
+      "thumbnail": "☁️",
+      "excerpt": "A deep dive into major cloud platforms and how to choose the right one for your needs.",
+      "content": "Cloud computing has become essential for modern businesses. Let's compare the major players...",
+      "readTime": "15 min read"
+    },
+    {
+      "id": 5,
+      "title": "Data Science Fundamentals: From Data to Insights",
+      "slug": "data-science-fundamentals",
+      "author": "Ananya Singh",
+      "date": "2025-10-05",
+      "category": "Data Science",
+      "thumbnail": "📊",
+      "excerpt": "Learn how to extract meaningful insights from data and make data-driven decisions.",
+      "content": "Data science is the intersection of statistics, programming, and domain knowledge. In this...",
+      "readTime": "11 min read"
+    },
+    {
+      "id": 6,
+      "title": "DevNest Hackathon 2025: A Summary of Innovation",
+      "slug": "hackathon-2025-summary",
+      "author": "Vikram Kumar",
+      "date": "2025-09-28",
+      "category": "Community",
+      "thumbnail": "🏆",
+      "excerpt": "Recap of our most successful hackathon with incredible projects and talented developers.",
+      "content": "This year's hackathon was beyond expectations. With over 100 teams participating...",
+      "readTime": "7 min read"
+    }
+  ]
+}

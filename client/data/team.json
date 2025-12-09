@@ -1,0 +1,56 @@
+{
+  "coreTeam": [
+    {
+      "id": 1,
+      "name": "Aaditya Kumar",
+      "role": "Core Team Member",
+      "designation": "DevNest Co-Founder",
+      "bio": "Quiet focus today builds unstoppable strength tomorrow. Visionary leader driving DevNest's mission.",
+      "image": "💻",
+      "socials": {
+        "github": "#",
+        "linkedin": "https://www.linkedin.com/in/aadityakumarvats/",
+        "instagram": "#"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Tabinda Naseem",
+      "role": "Core Team Member",
+      "designation": "DevNest Co-Founder",
+      "bio": "My soul is alight with the fire of the world's motion, made brighter by my resolve. Empowering tech enthusiasts.",
+      "image": "✨",
+      "socials": {
+        "github": "#",
+        "linkedin": "https://www.linkedin.com/in/tabinda-naseem-948625335?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "instagram": "#"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Ayush Kumar Jha",
+      "role": "Core Team Member",
+      "designation": "DevNest Co-Founder",
+      "bio": "Precision in thought, perfection in execution. Building the future of DevNest with strategic vision.",
+      "image": "�️",
+      "socials": {
+        "github": "#",
+        "linkedin": "https://www.linkedin.com/in/ayush-kumar-jha-058b64323",
+        "instagram": "#"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Nandini Jaishree",
+      "role": "Core Team Member",
+      "designation": "DevNest Co-Founder",
+      "bio": "Dedicated to fostering innovation and excellence in the DevNest community. Leading with passion and purpose.",
+      "image": "🚀",
+      "socials": {
+        "github": "#",
+        "linkedin": "#",
+        "instagram": "#"
+      }
+    }
+  ]
+}
