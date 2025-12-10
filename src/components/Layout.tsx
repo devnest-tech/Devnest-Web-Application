@@ -183,12 +183,12 @@ export function Layout({ children }: LayoutProps) {
                 <h3 className="font-poppins font-semibold mb-4">Community</h3>
                 <ul className="space-y-2 text-sm">
                   <li>
-                      <Link
-                        href="/blogs"
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        Blog
-                      </Link>
+                    <Link
+                      href="/blogs"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      Blog
+                    </Link>
                   </li>
                   <li>
                     <a

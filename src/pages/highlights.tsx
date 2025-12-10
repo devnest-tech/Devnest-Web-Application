@@ -84,9 +84,8 @@ export default function HighlightsPage() {
               {filteredHighlights.map((highlight, index) => (
                 <div
                   key={highlight.id}
-                  className={`glass-effect rounded-lg overflow-hidden hover-lift transition-all cursor-pointer group ${
-                    index % 3 === 0 ? "lg:col-span-1 lg:row-span-2" : ""
-                  }`}
+                  className={`glass-effect rounded-lg overflow-hidden hover-lift transition-all cursor-pointer group ${index % 3 === 0 ? "lg:col-span-1 lg:row-span-2" : ""
+                    }`}
                   onClick={() => setSelectedImage(highlight)}
                   style={{
                     animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
@@ -94,9 +93,8 @@ export default function HighlightsPage() {
                 >
                   {/* Image Container */}
                   <div
-                    className={`relative bg-gradient-to-br from-primary/20 to-secondary/20 overflow-hidden flex items-center justify-center ${
-                      index % 3 === 0 ? "h-96" : "h-48"
-                    }`}
+                    className={`relative bg-gradient-to-br from-primary/20 to-secondary/20 overflow-hidden flex items-center justify-center ${index % 3 === 0 ? "h-96" : "h-48"
+                      }`}
                   >
                     <div className={`${index % 3 === 0 ? "text-9xl" : "text-6xl"} group-hover:scale-110 transition-transform duration-300`}>
                       {highlight.image}
