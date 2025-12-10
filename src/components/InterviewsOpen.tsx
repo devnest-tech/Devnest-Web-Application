@@ -1,6 +1,6 @@
+import Image from "next/image";
 import { Zap, CheckCircle, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 
 export function InterviewsOpen() {
   const isOpen = true; // Toggle this to change status
@@ -38,9 +38,11 @@ export function InterviewsOpen() {
         {/* Main Content */}
         <div className="text-center mb-12">
           <div className="flex justify-center mb-6">
-            <img 
-              src="/logo.png" 
-              alt="DevNest" 
+            <Image
+              src="/logo.png"
+              alt="DevNest"
+              width={64}
+              height={64}
               className="w-16 h-16 object-contain"
             />
           </div>

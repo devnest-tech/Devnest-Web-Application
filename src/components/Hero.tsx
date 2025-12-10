@@ -1,7 +1,16 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Zap, Users, Trophy, Building2 } from "lucide-react";
+
+const HERO_QUOTES = [
+  '"Build something that makes a difference."',
+  '"Together, we build. Together, we innovate. Together, we are DevNest."',
+  '"The future belongs to those who believe in the beauty of their dreams."',
+  '"Innovation is the ability to see change as an opportunity, not a threat."',
+  '"Learn by doing — we provide a platform to connect with the outer tech world."',
+] as const;
 
 export function Hero() {
   const [counters, setCounters] = useState({
@@ -14,14 +23,6 @@ export function Hero() {
   const [displayedQuote, setDisplayedQuote] = useState(
     '"Together, we build. Together, we innovate. Together, we are DevNest."',
   );
-
-  const quotes = [
-    '"Build something that makes a difference."',
-    '"Together, we build. Together, we innovate. Together, we are DevNest."',
-    '"The future belongs to those who believe in the beauty of their dreams."',
-    '"Innovation is the ability to see change as an opportunity, not a threat."',
-    '"Learn by doing — we provide a platform to connect with the outer tech world."',
-  ];
 
   useEffect(() => {
     const counterTargets = {
@@ -57,7 +58,9 @@ export function Hero() {
 
   useEffect(() => {
     const quoteInterval = setInterval(() => {
-      setDisplayedQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+      setDisplayedQuote(
+        HERO_QUOTES[Math.floor(Math.random() * HERO_QUOTES.length)],
+      );
     }, 8000);
 
     return () => clearInterval(quoteInterval);
@@ -95,11 +98,14 @@ export function Hero() {
 
         {/* Logo & Name */}
         <div className="mb-8 flex items-center justify-center gap-4">
-          <img 
-            src="/logo.png" 
-            alt="DevNest Logo" 
+          <Image
+            src="/logo.png"
+            alt="DevNest Logo"
+            width={80}
+            height={80}
+            priority
             className="w-20 h-20 object-contain drop-shadow-lg shadow-primary/30 animate-bounce"
-            style={{animationDuration: '3s'}}
+            style={{ animationDuration: "3s" }}
           />
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-poppins font-bold glow-text">
             DevNest
@@ -125,24 +131,24 @@ export function Hero() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-          <Link to="/join">
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2 neon-border"
-            >
+          <Button
+            asChild
+            size="lg"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2 neon-border"
+          >
+            <Link href="/join">
               <Zap className="w-5 h-5" />
               Join the Nest
-            </Button>
-          </Link>
-          <Link to="/projects">
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-secondary text-secondary hover:bg-secondary/10 gap-2"
-            >
-              💡 Explore Projects
-            </Button>
-          </Link>
+            </Link>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="border-secondary text-secondary hover:bg-secondary/10 gap-2"
+          >
+            <Link href="/projects">💡 Explore Projects</Link>
+          </Button>
         </div>
 
         {/* Rotating Quote */}

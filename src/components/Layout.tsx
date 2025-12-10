@@ -1,5 +1,6 @@
 import { ReactNode, useState } from "react";
-import { Link } from "react-router-dom";
+import Image from "next/image";
+import Link from "next/link";
 import {
   Menu,
   X,
@@ -50,10 +51,13 @@ export function Layout({ children }: LayoutProps) {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               {/* Logo */}
-              <Link to="/" className="flex items-center gap-2 group">
-                <img 
-                  src="/logo.png" 
-                  alt="DevNest Logo" 
+              <Link href="/" className="flex items-center gap-2 group">
+                <Image
+                  src="/logo.png"
+                  alt="DevNest Logo"
+                  width={40}
+                  height={40}
+                  priority
                   className="w-10 h-10 object-contain group-hover:scale-110 transition-transform"
                 />
                 <span className="font-poppins font-bold text-xl glow-text hidden sm:inline">
@@ -66,7 +70,7 @@ export function Layout({ children }: LayoutProps) {
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
-                    to={item.href}
+                    href={item.href}
                     className="px-3 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-primary/10 hover:text-primary"
                   >
                     {item.label}
@@ -88,14 +92,13 @@ export function Layout({ children }: LayoutProps) {
                   )}
                 </button>
 
-                <Link to="/join">
-                  <Button
-                    size="sm"
-                    className="bg-primary hover:bg-primary/90 text-primary-foreground hidden sm:inline-flex gap-2"
-                  >
-                    🚀 Join
-                  </Button>
-                </Link>
+                <Button
+                  asChild
+                  size="sm"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground hidden sm:inline-flex gap-2"
+                >
+                  <Link href="/join">🚀 Join</Link>
+                </Button>
 
                 {/* Mobile menu button */}
                 <button
@@ -117,18 +120,16 @@ export function Layout({ children }: LayoutProps) {
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
-                    to={item.href}
+                    href={item.href}
                     className="block px-3 py-2 rounded-lg text-sm font-medium hover:bg-primary/10 hover:text-primary transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
                   </Link>
                 ))}
-                <Link to="/join" className="block w-full">
-                  <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
-                    🚀 Join
-                  </Button>
-                </Link>
+                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2" asChild>
+                  <Link href="/join">🚀 Join</Link>
+                </Button>
               </div>
             )}
           </div>
@@ -144,9 +145,11 @@ export function Layout({ children }: LayoutProps) {
               {/* Brand */}
               <div>
                 <div className="flex items-center gap-2 mb-4">
-                  <img 
-                    src="/logo.png" 
-                    alt="DevNest Logo" 
+                  <Image
+                    src="/logo.png"
+                    alt="DevNest Logo"
+                    width={40}
+                    height={40}
                     className="w-10 h-10 object-contain"
                   />
                   <span className="font-poppins font-bold text-lg glow-text">
@@ -165,7 +168,7 @@ export function Layout({ children }: LayoutProps) {
                   {navItems.map((item) => (
                     <li key={item.href}>
                       <Link
-                        to={item.href}
+                        href={item.href}
                         className="text-muted-foreground hover:text-primary transition-colors"
                       >
                         {item.label}
@@ -180,12 +183,12 @@ export function Layout({ children }: LayoutProps) {
                 <h3 className="font-poppins font-semibold mb-4">Community</h3>
                 <ul className="space-y-2 text-sm">
                   <li>
-                    <Link
-                      to="/blogs"
-                      className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      Blog
-                    </Link>
+                      <Link
+                        href="/blogs"
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        Blog
+                      </Link>
                   </li>
                   <li>
                     <a

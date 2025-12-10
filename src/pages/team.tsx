@@ -1,4 +1,7 @@
 import { Layout } from "@/components/Layout";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
 import { Github, Linkedin, Instagram } from "lucide-react";
 import teamData from "@/data/team.json";
 
@@ -26,9 +29,11 @@ export default function TeamPage() {
           {/* Header */}
           <div className="text-center mb-20">
             <div className="mb-6 inline-flex items-center gap-3 px-4 py-2 rounded-full bg-primary/10 border border-primary/30">
-              <img 
-                src="/logo.png" 
-                alt="DevNest" 
+              <Image
+                src="/logo.png"
+                alt="DevNest"
+                width={24}
+                height={24}
                 className="w-6 h-6 object-contain"
               />
               <span className="text-primary text-sm font-medium">👥 Our Core Team</span>
@@ -129,11 +134,12 @@ export default function TeamPage() {
               <p className="text-muted-foreground mb-6">
                 Are you passionate about tech and want to make a difference? We're always looking for talented individuals to join our growing community.
               </p>
-              <a href="/join" className="inline-block">
-                <button className="px-8 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg transition-colors">
-                  Become Part of the Team
-                </button>
-              </a>
+              <Button
+                asChild
+                className="px-8 py-6 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg transition-colors"
+              >
+                <Link href="/join">Become Part of the Team</Link>
+              </Button>
             </div>
           </div>
         </div>

@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import { Github, Linkedin, Instagram } from "lucide-react";
 import teamData from "@/data/team.json";
 
@@ -28,9 +30,11 @@ export function Team() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="mb-6 inline-flex items-center gap-3 px-4 py-2 rounded-full bg-primary/10 border border-primary/30">
-            <img 
-              src="/logo.png" 
-              alt="DevNest" 
+            <Image
+              src="/logo.png"
+              alt="DevNest"
+              width={24}
+              height={24}
               className="w-6 h-6 object-contain"
             />
             <span className="text-primary text-sm font-medium">Meet the Team</span>
@@ -132,9 +136,9 @@ export function Team() {
           <p className="text-lg text-muted-foreground">
             Interested in joining the core team?
           </p>
-          <a href="/join" className="text-primary hover:underline font-semibold">
+          <Link href="/join" className="text-primary hover:underline font-semibold">
             Apply Now →
-          </a>
+          </Link>
         </div>
       </div>
 

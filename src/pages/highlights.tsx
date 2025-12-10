@@ -1,5 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { useState } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Users, Zap, Filter } from "lucide-react";
 import highlightsData from "@/data/highlights.json";
@@ -33,9 +34,11 @@ export default function HighlightsPage() {
           {/* Header */}
           <div className="text-center mb-16">
             <div className="mb-6 inline-flex items-center gap-3 px-4 py-2 rounded-full bg-primary/10 border border-primary/30">
-              <img 
-                src="/logo.png" 
-                alt="DevNest" 
+              <Image
+                src="/logo.png"
+                alt="DevNest"
+                width={20}
+                height={20}
                 className="w-5 h-5 object-contain"
               />
               <span className="text-primary text-sm font-medium">Event Highlights</span>

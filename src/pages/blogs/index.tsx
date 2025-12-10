@@ -2,9 +2,10 @@ import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, ArrowRight, Clock, User } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import blogsData from "@/data/blogs.json";
-import { Link } from "react-router-dom";
 
 interface Blog {
   id: number;
@@ -40,9 +41,11 @@ export default function BlogsPage() {
           {/* Header */}
           <div className="text-center mb-16">
             <div className="mb-6 inline-flex items-center gap-3 px-4 py-2 rounded-full bg-primary/10 border border-primary/30">
-              <img 
-                src="/logo.png" 
-                alt="DevNest" 
+              <Image
+                src="/logo.png"
+                alt="DevNest"
+                width={20}
+                height={20}
                 className="w-5 h-5 object-contain"
               />
               <span className="text-primary text-sm font-medium">Knowledge Hub</span>
@@ -142,16 +145,17 @@ export default function BlogsPage() {
                     </div>
 
                     {/* Read More */}
-                    <Link to={`/blog/${blog.slug}`}>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="w-full gap-2 group/btn"
-                      >
+                    <Button
+                      asChild
+                      variant="outline"
+                      size="sm"
+                      className="w-full gap-2 group/btn"
+                    >
+                      <Link href={`/blog/${blog.slug}`}>
                         Read More
                         <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                      </Button>
-                    </Link>
+                      </Link>
+                    </Button>
                   </div>
                 </div>
               ))}
