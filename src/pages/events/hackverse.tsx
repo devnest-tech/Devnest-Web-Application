@@ -55,6 +55,8 @@ const whyJoinList = [
 	"Ship something meaningful in a high-energy builder marathon",
 ];
 
+const normalizeRoll = (roll?: string | null) => roll?.trim().toLowerCase() ?? "";
+
 const heroStats = [
 	{ label: "Duration", value: "12-hour sprint", icon: Clock },
 	{ label: "Venue", value: "Lamrin Tech Skills University", icon: MapPin },
@@ -252,6 +254,39 @@ const HackverseRegistrationForm = () => {
 
 	const numericTeamSize = Number(teamSize);
 
+	const markRollConflicts = useCallback(
+		(conflicts: string[]) => {
+			const normalizedConflicts = conflicts
+				.map((roll) => normalizeRoll(roll))
+				.filter((roll) => roll.length > 0);
+
+			if (!normalizedConflicts.length) {
+				return;
+			}
+
+			const values = form.getValues();
+			const rollFields: Array<{
+				field: keyof HackverseFormValues;
+				value: string;
+			}> = [
+				{ field: "rollNumber", value: values.rollNumber },
+				{ field: "participant2Roll", value: values.participant2Roll },
+				{ field: "participant3Roll", value: values.participant3Roll },
+				{ field: "participant4Roll", value: values.participant4Roll },
+			];
+
+			rollFields.forEach(({ field, value }) => {
+				if (value && normalizedConflicts.includes(normalizeRoll(value))) {
+					form.setError(field, {
+						type: "manual",
+						message: "This roll number is already registered.",
+					});
+				}
+			});
+		},
+		[form],
+	);
+
 	const loadPaymentQr = useCallback(async () => {
 		try {
 			setQrStatus("loading");
@@ -329,17 +364,30 @@ const HackverseRegistrationForm = () => {
 
 			if (!response.ok) {
 				let errorMessage = "Unable to submit form";
+				let handled = false;
 				try {
 					const errorData = await response.json();
 					if (errorData?.message) {
 						errorMessage = errorData.message;
 					}
-					if (errorData?.conflicts?.length) {
+					if (Array.isArray(errorData?.conflicts) && errorData.conflicts.length > 0) {
+						markRollConflicts(errorData.conflicts as string[]);
+						handled = true;
 						errorMessage = `${errorMessage} (Conflicts: ${errorData.conflicts.join(", ")})`;
 					}
 				} catch (parseError) {
 					console.error("HackVerse error payload parse", parseError);
 				}
+
+				if (handled) {
+					toast({
+						title: "Submission blocked",
+						description: errorMessage,
+						variant: "destructive",
+					});
+					return;
+				}
+
 				throw new Error(errorMessage);
 			}
 
