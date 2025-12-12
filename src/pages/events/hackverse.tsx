@@ -269,11 +269,11 @@ const HackverseRegistrationForm = () => {
 				field: keyof HackverseFormValues;
 				value: string;
 			}> = [
-				{ field: "rollNumber", value: values.rollNumber },
-				{ field: "participant2Roll", value: values.participant2Roll },
-				{ field: "participant3Roll", value: values.participant3Roll },
-				{ field: "participant4Roll", value: values.participant4Roll },
-			];
+					{ field: "rollNumber", value: values.rollNumber },
+					{ field: "participant2Roll", value: values.participant2Roll },
+					{ field: "participant3Roll", value: values.participant3Roll },
+					{ field: "participant4Roll", value: values.participant4Roll },
+				];
 
 			rollFields.forEach(({ field, value }) => {
 				if (value && normalizedConflicts.includes(normalizeRoll(value))) {
