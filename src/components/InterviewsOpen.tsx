@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Zap, CheckCircle, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -72,16 +73,12 @@ export function InterviewsOpen() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="https://forms.gle/6djQnsANvvbbK8eLA"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button className="w-full sm:w-auto bg-primary hover:bg-primary/90 gap-2 text-lg px-8">
+          <Button asChild className="w-full sm:w-auto bg-primary hover:bg-primary/90 gap-2 text-lg px-8">
+            <Link href="/events#hackverse-form">
               <Zap className="w-5 h-5" />
               Register for DevNest
-            </Button>
-          </a>
+            </Link>
+          </Button>
           <a
             href="https://www.instagram.com/devnest_tech_club/"
             target="_blank"
