@@ -328,7 +328,19 @@ const HackverseRegistrationForm = () => {
 			});
 
 			if (!response.ok) {
-				throw new Error("Unable to submit form");
+				let errorMessage = "Unable to submit form";
+				try {
+					const errorData = await response.json();
+					if (errorData?.message) {
+						errorMessage = errorData.message;
+					}
+					if (errorData?.conflicts?.length) {
+						errorMessage = `${errorMessage} (Conflicts: ${errorData.conflicts.join(", ")})`;
+					}
+				} catch (parseError) {
+					console.error("HackVerse error payload parse", parseError);
+				}
+				throw new Error(errorMessage);
 			}
 
 			toast({
@@ -342,9 +354,12 @@ const HackverseRegistrationForm = () => {
 			}
 		} catch (error) {
 			console.error("HackVerse submission error", error);
+			const fallbackMessage = "Please try again or email us at devnest.techclub@gmail.com.";
+			const description =
+				error instanceof Error && error.message ? error.message : fallbackMessage;
 			toast({
 				title: "Submission failed",
-				description: "Please try again or email us at devnest.techclub@gmail.com.",
+				description,
 				variant: "destructive",
 			});
 		} finally {
@@ -389,9 +404,7 @@ const HackverseRegistrationForm = () => {
 										<FormControl>
 											<Input placeholder="Aditi Sharma" {...field} />
 										</FormControl>
-										<FormControl>
-											<Input placeholder="CSE • 3rd Year" {...field} />
-										</FormControl>
+										<FormMessage />
 									</FormItem>
 								)}
 							/>
@@ -405,9 +418,7 @@ const HackverseRegistrationForm = () => {
 										<FormControl>
 											<Input placeholder="241000X00XX" {...field} />
 										</FormControl>
-										<FormControl>
-											<Input placeholder="Third teammate" {...field} />
-										</FormControl>
+										<FormMessage />
 									</FormItem>
 								)}
 							/>
