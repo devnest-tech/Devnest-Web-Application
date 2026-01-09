@@ -388,9 +388,6 @@ const HackverseRegistrationForm = () => {
 			});
 
 			form.reset(hackverseDefaultValues);
-			if (fileInputRef.current) {
-				fileInputRef.current.value = "";
-			}
 		} catch (error) {
 			console.error("HackVerse submission error", error);
 			const fallbackMessage = "Please try again or email us at devnest.techclub@gmail.com.";
