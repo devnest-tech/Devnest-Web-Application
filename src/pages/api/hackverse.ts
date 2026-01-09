@@ -3,11 +3,10 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import {
 	appendHackverseSubmission,
 	getExistingRollConflicts,
-	persistPaymentProofFile,
 	type HackverseSubmissionRecord,
 } from "../../../server/hackverse-storage";
 
-const requiredFields: Array<keyof HackverseSubmissionRecord | "paymentProofBase64"> = [
+const requiredFields: Array<keyof HackverseSubmissionRecord> = [
 	"submittedAt",
 	"fullName",
 	"rollNumber",
@@ -19,7 +18,6 @@ const requiredFields: Array<keyof HackverseSubmissionRecord | "paymentProofBase6
 	"participant2",
 	"participant2Roll",
 	"transactionId",
-	"paymentProofBase64",
 ];
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -28,16 +26,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		return res.status(405).json({ message: "Method not allowed" });
 	}
 
-	const payload = req.body as Partial<HackverseSubmissionRecord> & {
-		paymentProofBase64?: string | null;
-		paymentProofName?: string | null;
-		paymentProofType?: string | null;
-	};
+	const payload = req.body as Partial<HackverseSubmissionRecord>;
 
 	const missing = requiredFields.filter((field) => {
-		if (field === "paymentProofBase64") {
-			return !payload.paymentProofBase64;
-		}
 		const value = payload[field];
 		return typeof value === "undefined" || value === null || value === "";
 	});
@@ -55,20 +46,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		payload.participant4Roll,
 	].filter((roll) => !!roll);
 
-	const conflicts = getExistingRollConflicts(incomingRolls as string[]);
-	if (conflicts.length > 0) {
-		return res.status(409).json({
-			message: "One or more roll numbers are already registered.",
-			conflicts,
-		});
-	}
-
 	try {
-		const { storedPath, mimeType } = persistPaymentProofFile(
-			payload.paymentProofBase64 ?? null,
-			payload.paymentProofName ?? null,
-			payload.paymentProofType ?? null,
-		);
+		const conflicts = await getExistingRollConflicts(incomingRolls as string[]);
+		if (conflicts.length > 0) {
+			return res.status(409).json({
+				message: "One or more roll numbers are already registered.",
+				conflicts,
+			});
+		}
 
 		const record: HackverseSubmissionRecord = {
 			submittedAt: payload.submittedAt!,
@@ -87,11 +72,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 			participant4Roll: payload.participant4Roll ?? "",
 			transactionId: payload.transactionId!,
 			notes: payload.notes ?? "",
-			paymentProofFile: storedPath,
-			paymentProofType: mimeType,
 		};
 
-		appendHackverseSubmission(record);
+		await appendHackverseSubmission(record);
 
 		return res.status(200).json({ message: "Submission stored" });
 	} catch (error) {

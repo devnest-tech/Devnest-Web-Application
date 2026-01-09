@@ -78,7 +78,6 @@ type HackverseFormValues = {
 	participant4: string;
 	participant4Roll: string;
 	transactionId: string;
-	paymentProof?: FileList;
 	joinedWhatsapp: boolean;
 	notes: string;
 };
@@ -98,7 +97,6 @@ const hackverseDefaultValues: HackverseFormValues = {
 	participant4: "",
 	participant4Roll: "",
 	transactionId: "",
-	paymentProof: undefined,
 	joinedWhatsapp: false,
 	notes: "",
 };
@@ -216,7 +214,7 @@ const HackverseDetailsSection = () => (
 		<div className="glass-effect rounded-3xl border border-border/40 p-6">
 			<h3 className="text-xl font-semibold mb-4">Payment & Support</h3>
 			<p className="text-muted-foreground mb-3">
-				A registration fee of <strong>₹100 per participant</strong> applies. Keep your transaction ID handy and upload the payment screenshot while submitting the form. Once paid, make sure every teammate has joined the official WhatsApp group for real-time announcements.
+				A registration fee of <strong>₹100 per participant</strong> applies. Keep your transaction ID handy for submitting the form. Once paid, make sure every teammate has joined the official WhatsApp group for real-time announcements.
 			</p>
 			<div className="flex flex-wrap gap-3 mb-4">
 				<Button asChild variant="outline">
@@ -344,20 +342,13 @@ const HackverseRegistrationForm = () => {
 	const onSubmit = async (values: HackverseFormValues) => {
 		setStatus("loading");
 		try {
-			const file = values.paymentProof?.[0];
-			const base64 = file ? await fileToBase64(file) : null;
-			const { paymentProof, ...rest } = values;
-
 			const response = await fetch("/api/hackverse", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({
-					...rest,
-					paymentProofBase64: base64,
-					paymentProofName: file?.name ?? null,
-					paymentProofType: file?.type ?? null,
+					...values,
 					submittedAt: new Date().toISOString(),
 				}),
 			});
@@ -710,36 +701,6 @@ const HackverseRegistrationForm = () => {
 											</FormControl>
 											<FormDescription>
 												You will find this in your payment success screen or SMS/email notification.
-											</FormDescription>
-											<FormMessage />
-										</FormItem>
-									)}
-								/>
-								<FormField
-									control={form.control}
-									name="paymentProof"
-									rules={{
-										validate: (value) =>
-											value && value.length > 0
-												? true
-												: "Upload the payment screenshot or PDF receipt",
-									}}
-									render={({ field }) => (
-										<FormItem>
-											<FormLabel>Payment Screenshot / PDF *</FormLabel>
-											<FormControl>
-												<Input
-													type="file"
-													accept="image/jpeg,image/png,application/pdf"
-													ref={(instance) => {
-														field.ref(instance);
-														fileInputRef.current = instance;
-													}}
-													onChange={(event) => field.onChange(event.target.files ?? undefined)}
-												/>
-											</FormControl>
-											<FormDescription>
-												Accepted formats: JPG, PNG or PDF (max 10MB). Make sure the transaction ID is visible.
 											</FormDescription>
 											<FormMessage />
 										</FormItem>
