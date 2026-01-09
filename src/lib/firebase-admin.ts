@@ -9,10 +9,21 @@ let adminStorage: Storage;
 const initializeFirebaseAdmin = () => {
 	if (getApps().length === 0) {
 		// Initialize with service account credentials
-		const serviceAccount = process.env.FIREBASE_SERVICE_ACCOUNT
-			? JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT)
-			: undefined;
+		let serviceAccount;
 
+		if (process.env.FIREBASE_SERVICE_ACCOUNT) {
+			try {
+				serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+			} catch (error) {
+				const message =
+					error instanceof Error ? error.message : String(error);
+				throw new Error(
+					`FIREBASE_SERVICE_ACCOUNT environment variable contains invalid JSON: ${message}`,
+				);
+			}
+		} else {
+			serviceAccount = undefined;
+		}
 		if (!serviceAccount) {
 			throw new Error(
 				"FIREBASE_SERVICE_ACCOUNT environment variable is not set or invalid",
