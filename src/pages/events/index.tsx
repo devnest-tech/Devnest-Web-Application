@@ -24,7 +24,7 @@ const upcomingEvents = [
 		],
 		status: "open" as const,
 		icon: "🚀",
-		registrationUrl: "/events/hackverse#hackverse-form",
+		registrationUrl: "/events/hackverse-register",
 		learnMoreUrl: "/events/hackverse",
 	},
 ];
@@ -300,7 +300,7 @@ const HackversePromoCard = () => (
 						</Link>
 					</Button>
 					<Button asChild variant="outline" className="gap-2">
-						<Link href="/events/hackverse#hackverse-form">
+						<Link href="/events/hackverse-register">
 							Jump to registration
 						</Link>
 					</Button>
