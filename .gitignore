@@ -2,6 +2,7 @@ node_modules
 .next
 uploads
 data/
+.DS_store
 
 # Environment variables
 .env.local

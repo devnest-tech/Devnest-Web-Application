@@ -1,8 +1,8 @@
 import { Layout } from "@/components/Layout";
+import { TeamCard } from "@/components/TeamCard";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Instagram } from "lucide-react";
 import teamData from "@/data/team.json";
 
 interface TeamMember {
@@ -47,81 +47,9 @@ export default function TeamPage() {
           </div>
 
           {/* Team Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {team.map((member, index) => (
-              <div
-                key={member.id}
-                className="group relative"
-                style={{
-                  animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
-                }}
-              >
-                {/* Card Container */}
-                <div className="relative h-80 perspective">
-                  {/* Front of card */}
-                  <div className="absolute inset-0 glass-effect rounded-xl p-6 flex flex-col items-center justify-center text-center group-hover:opacity-0 transition-opacity duration-300">
-                    <div className="text-6xl mb-4">{member.image}</div>
-                    <h3 className="text-xl font-poppins font-bold mb-1">
-                      {member.name}
-                    </h3>
-                    <p className="text-sm text-primary font-semibold mb-2">
-                      {member.role}
-                    </p>
-                    <p className="text-xs text-muted-foreground">
-                      {member.designation}
-                    </p>
-                  </div>
-
-                  {/* Back of card (Bio) */}
-                  <div className="absolute inset-0 glass-effect rounded-xl p-6 flex flex-col justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div>
-                      <h3 className="text-lg font-poppins font-bold mb-3 text-primary">
-                        {member.name}
-                      </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {member.bio}
-                      </p>
-                    </div>
-
-                    {/* Social Links */}
-                    <div className="flex gap-3 justify-center pt-4 border-t border-border/40">
-                      {member.socials.github && member.socials.github !== "#" && (
-                        <a
-                          href={member.socials.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-primary transition-colors"
-                          title="GitHub"
-                        >
-                          <Github className="w-5 h-5" />
-                        </a>
-                      )}
-                      {member.socials.linkedin && member.socials.linkedin !== "#" && (
-                        <a
-                          href={member.socials.linkedin}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-primary transition-colors"
-                          title="LinkedIn"
-                        >
-                          <Linkedin className="w-5 h-5" />
-                        </a>
-                      )}
-                      {member.socials.instagram && member.socials.instagram !== "#" && (
-                        <a
-                          href={member.socials.instagram}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-primary transition-colors"
-                          title="Instagram"
-                        >
-                          <Instagram className="w-5 h-5" />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <TeamCard key={member.id} member={member} index={index} />
             ))}
           </div>
 
@@ -144,6 +72,24 @@ export default function TeamPage() {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes shimmer {
+          0% { background-position: -200% -200%; }
+          100% { background-position: 200% 200%; }
+        }
+      `}</style>
     </Layout>
   );
 }

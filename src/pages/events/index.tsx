@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
-import { Award, Calendar, Clock, MapPin, Users, Zap } from "lucide-react";
+import { Award, Calendar, Clock, MapPin, Users, Zap, CalendarDays } from "lucide-react";
 
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
@@ -24,7 +24,7 @@ const upcomingEvents = [
 		],
 		status: "open" as const,
 		icon: "🚀",
-		registrationUrl: "/events/hackverse#hackverse-form",
+		registrationUrl: "/events/hackverse-register",
 		learnMoreUrl: "/events/hackverse",
 	},
 ];
@@ -75,6 +75,23 @@ export default function EventsPage() {
 						<p className="text-lg text-muted-foreground max-w-2xl mx-auto">
 							Join our community events, hackathons, workshops, and tech talks throughout the year. Build, collaborate, and innovate with us!
 						</p>
+
+						{/* Schedule Banner */}
+						<div className="mt-8 mx-auto max-w-3xl">
+							<Link href="/events/schedule">
+								<div className="glass-effect rounded-xl p-6 hover-lift transition-all cursor-pointer border-2 border-primary/20 hover:border-primary/40">
+									<div className="flex items-center justify-center gap-3 mb-2">
+										<CalendarDays className="w-6 h-6 text-primary" />
+										<h2 className="text-xl font-bold text-primary">
+											View Complete 2026 Event Schedule
+										</h2>
+									</div>
+									<p className="text-sm text-muted-foreground">
+										February - June 2026 • 5 Major Events • Guest Lectures, Hackathons, Datathons & More
+									</p>
+								</div>
+							</Link>
+						</div>
 					</header>
 
 					<div className="flex justify-center gap-4 mb-12 flex-wrap">
@@ -300,7 +317,7 @@ const HackversePromoCard = () => (
 						</Link>
 					</Button>
 					<Button asChild variant="outline" className="gap-2">
-						<Link href="/events/hackverse#hackverse-form">
+						<Link href="/events/hackverse-register">
 							Jump to registration
 						</Link>
 					</Button>
