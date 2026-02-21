@@ -1,4 +1,4 @@
-import { ReactNode, useState, useEffect } from "react";
+import { ReactNode, useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -13,6 +13,11 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
+import dynamic from "next/dynamic";
+
+const FaultyTerminal = dynamic(() => import("@/components/FaultyTerminal"), {
+  ssr: false,
+});
 
 interface LayoutProps {
   children: ReactNode;
@@ -22,9 +27,28 @@ export function Layout({ children }: LayoutProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [isTerminalVisible, setIsTerminalVisible] = useState(true);
+  const terminalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  // Optimize FaultyTerminal rendering
+  useEffect(() => {
+    if (!terminalRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsTerminalVisible(entry.isIntersecting || entry.boundingClientRect.top < window.innerHeight);
+        });
+      },
+      { threshold: 0, rootMargin: '100px' }
+    );
+
+    observer.observe(terminalRef.current);
+    return () => observer.disconnect();
   }, []);
 
   const toggleDarkMode = () => {
@@ -45,17 +69,39 @@ export function Layout({ children }: LayoutProps) {
   return (
     <div>
       <div className="min-h-screen bg-background text-foreground flex flex-col relative">
-        {/* GPU-Accelerated Global Background */}
-        <div className="fixed inset-0 pointer-events-none z-0" style={{ contain: 'layout style paint', willChange: 'transform' }}>
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-muted/20" style={{ transform: 'translateZ(0)', backfaceVisibility: 'hidden' }} />
+        {/* Universal FaultyTerminal Background */}
+        <div ref={terminalRef} className="fixed inset-0 pointer-events-none z-0 opacity-10" style={{ contain: 'layout style paint' }}>
+          <FaultyTerminal
+            scale={1.5}
+            gridMul={[2, 1]}
+            digitSize={1.2}
+            timeScale={0.5}
+            scanlineIntensity={0.5}
+            glitchAmount={0.8}
+            flickerAmount={0.8}
+            noiseAmp={0.8}
+            chromaticAberration={0}
+            dither={0}
+            curvature={0.1}
+            tint="#00B871"
+            mouseReact={false}
+            mouseStrength={0}
+            pageLoadAnimation={false}
+            brightness={0.6}
+            pause={!isTerminalVisible}
+          />
+        </div>
+
+        {/* GPU-Accelerated Global Background Accents */}
+        <div className="fixed inset-0 pointer-events-none z-[1]" style={{ contain: 'layout style paint', willChange: 'transform' }}>
           <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-primary/10 rounded-full" style={{ filter: 'blur(80px)', transform: 'translate3d(0,0,0)', willChange: 'transform', backfaceVisibility: 'hidden', opacity: 0.3 }} />
           <div className="absolute bottom-20 left-20 w-[600px] h-[600px] bg-primary/8 rounded-full" style={{ filter: 'blur(80px)', transform: 'translate3d(0,0,0)', willChange: 'transform', backfaceVisibility: 'hidden', opacity: 0.25 }} />
         </div>
 
         {/* Navigation */}
-        <nav className="sticky top-0 z-50 backdrop-blur-xl bg-background/80 border-b border-primary/30 shadow-lg shadow-primary/5" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
+        <nav className="sticky top-0 z-50 backdrop-blur-xl bg-background/90 border-b border-border shadow-lg shadow-primary/5" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
           {/* Gradient Accent Line */}
-          <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-50" style={{ transform: 'translateZ(0)' }} />
+          <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-60" style={{ transform: 'translateZ(0)' }} />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div className="flex items-center justify-between h-16 sm:h-20">
@@ -142,12 +188,12 @@ export function Layout({ children }: LayoutProps) {
 
             {/* Enhanced Mobile Nav */}
             {isMenuOpen && (
-              <div className="md:hidden pb-6 pt-4 space-y-2 animate-in slide-in-from-top duration-300 border-t border-primary/10 mt-2 bg-gradient-to-b from-primary/5 to-transparent">
+              <div className="md:hidden pb-6 pt-4 space-y-2 animate-in slide-in-from-top duration-300 border-t border-border mt-2">
                 {navItems.map((item, index) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="block px-5 py-3.5 rounded-xl text-base font-medium hover:bg-primary/10 hover:text-primary transition-all duration-300 active:scale-95 border border-primary/10 hover:border-primary/30 backdrop-blur-sm relative group overflow-hidden"
+                    className="block px-5 py-3.5 rounded-xl text-base font-medium hover:bg-primary/10 hover:text-primary transition-all duration-300 active:scale-95 border border-border hover:border-primary/40 backdrop-blur-sm relative group overflow-hidden glass-effect"
                     onClick={() => setIsMenuOpen(false)}
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
@@ -176,7 +222,7 @@ export function Layout({ children }: LayoutProps) {
         </nav>
 
         {/* Main Content */}
-        <main className="flex-grow relative z-10">{children}</main>
+        <main className="flex-grow relative z-[2]">{children}</main>
 
         {/* Footer */}
         <footer className="bg-muted/50 border-t border-border/40 mt-20">
@@ -273,7 +319,7 @@ export function Layout({ children }: LayoutProps) {
             {/* Social Links */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-border/40">
               <p className="text-xs sm:text-sm text-muted-foreground text-center sm:text-left">
-                © 2025 Devnest | Built with 💚 by Innovators
+                © 2026 DevNest | Built with 💚 by Innovators
               </p>
               <div className="flex items-center gap-4 sm:gap-4">
                 <a

@@ -24,7 +24,7 @@ export default function TeamPage() {
 
   return (
     <Layout>
-      <div className="relative min-h-screen py-20 bg-gradient-to-b from-background via-background to-muted/30 overflow-hidden">
+      <div className="relative min-h-screen py-20 overflow-hidden">
         {/* Animated Hexagon Pattern Background */}
         <div className="absolute inset-0 opacity-[0.04]">
           <div className="absolute inset-0" style={{

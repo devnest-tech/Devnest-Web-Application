@@ -22,7 +22,7 @@ export function Team() {
   const team: TeamMember[] = teamData.coreTeam;
 
   return (
-    <section id="team" className="relative py-16 sm:py-20 bg-gradient-to-b from-background via-muted/20 to-background overflow-hidden">
+    <section id="team" className="relative py-16 sm:py-20 overflow-hidden">
       {/* Removed animated background - using global background from Layout */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

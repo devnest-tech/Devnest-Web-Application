@@ -45,7 +45,7 @@ const heroStats = [
 export default function PromptatonEventPage() {
 	return (
 		<Layout>
-			<div className="min-h-screen bg-gradient-to-b from-background to-muted/40 py-16">
+			<div className="min-h-screen py-16">
 				<div className="mx-auto max-w-6xl px-4 sm:px-6">
 					<section className="text-center mb-16 space-y-6">
 						<div>
@@ -106,7 +106,7 @@ const PromptatonDetailsSection = () => (
 			<p className="text-muted-foreground max-w-3xl mx-auto mb-4">
 				Presented by Lamrin Tech Skills University Punjab and DevNest. Promptathon is a unique AI prompt engineering competition where your words become your weapon. This is not about speed or code – it's about pure thinking power and your ability to communicate with AI effectively.
 			</p>
-			<div className="max-w-2xl mx-auto mt-6 p-6 bg-primary/10 rounded-2xl border border-primary/30">
+			<div className="max-w-2xl mx-auto mt-6 p-6 bg-primary/15 rounded-2xl border border-primary/40 shadow-sm">
 				<h3 className="text-xl font-bold mb-3 text-primary">PROMPT SMARTER. THINK DEEPER. DOMINATE LOUDER.</h3>
 				<p className="text-muted-foreground italic">
 					"Craft prompts that push AI past the obvious. If you can <strong>ASK BETTER</strong>, you <strong>WIN</strong>."
@@ -173,11 +173,11 @@ const PromptatonDetailsSection = () => (
 				Contact & Support
 			</h3>
 			<div className="grid gap-4 md:grid-cols-2 mb-4">
-				<div className="p-4 bg-primary/10 rounded-lg">
+				<div className="p-4 bg-primary/15 rounded-lg border border-primary/30 shadow-sm">
 					<p className="text-sm text-muted-foreground mb-1">Student Coordinator</p>
 					<p className="font-semibold text-lg">{STUDENT_COORDINATOR}</p>
 				</div>
-				<div className="p-4 bg-secondary/10 rounded-lg">
+				<div className="p-4 bg-secondary/15 rounded-lg border border-secondary/30 shadow-sm">
 					<p className="text-sm text-muted-foreground mb-1">Faculty Coordinator</p>
 					<p className="font-semibold text-lg">{FACULTY_COORDINATOR}</p>
 				</div>

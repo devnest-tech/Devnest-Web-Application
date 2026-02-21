@@ -103,7 +103,7 @@ export default function SchedulePage() {
 					{/* Header */}
 					<div className="mb-12 sm:mb-16 text-center">
 						<div className="mb-6 inline-block">
-							<span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-medium">
+							<span className="inline-block px-4 py-2 rounded-full bg-primary/15 border border-primary/40 text-primary text-sm font-semibold shadow-sm">
 								📅 February - June 2026
 							</span>
 						</div>
@@ -138,7 +138,7 @@ export default function SchedulePage() {
 											</div>
 										</div>
 										<div className="flex items-center gap-3">
-											<div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/20 text-primary text-xs sm:text-sm font-medium">
+											<div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/25 text-primary text-xs sm:text-sm font-semibold border border-primary/20 shadow-sm">
 												<Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
 												{event.month}
 											</div>
@@ -186,7 +186,7 @@ export default function SchedulePage() {
 														className="flex flex-col sm:flex-row gap-3 sm:gap-4 rounded-lg bg-muted/30 border border-border/40 p-3 sm:p-4 transition-all hover:bg-muted/50 hover:border-primary/30"
 													>
 														<div className="flex-shrink-0">
-															<span className="inline-block px-3 py-1 rounded-md bg-primary/10 text-primary font-mono text-xs sm:text-sm font-medium">
+															<span className="inline-block px-3 py-1 rounded-md bg-primary/15 text-primary font-mono text-xs sm:text-sm font-semibold border border-primary/30 shadow-sm">
 																{item.time}
 															</span>
 														</div>

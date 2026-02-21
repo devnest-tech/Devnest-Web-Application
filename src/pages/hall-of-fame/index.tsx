@@ -6,7 +6,7 @@ export default function HallOfFamePage() {
       <div className="min-h-[calc(100vh-200px)] flex items-center justify-center">
         <div className="text-center max-w-2xl px-4">
           <div className="mb-8">
-            <div className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-medium mb-4">
+            <div className="inline-block px-4 py-2 rounded-full bg-primary/15 border border-primary/40 text-primary text-sm font-semibold mb-4 shadow-sm">
               Coming Soon
             </div>
           </div>

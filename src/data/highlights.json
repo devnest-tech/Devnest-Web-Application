@@ -2,63 +2,13 @@
   "highlights": [
     {
       "id": 1,
-      "title": "Hackverse X Google 2025",
-      "date": "2025-11-15",
+      "title": "Promptathon 2026",
+      "date": "2026-02-21",
       "category": "Hackathon",
-      "image": "🏆",
-      "description": "12-hour innovation marathon with 100+ teams competing",
-      "participants": "500+",
-      "projects": "75"
-    },
-    {
-      "id": 2,
-      "title": "AI Workshop Series Launch",
-      "date": "2025-10-22",
-      "category": "Workshop",
-      "image": "🤖",
-      "description": "Comprehensive AI/ML bootcamp with industry experts",
-      "participants": "200+",
-      "projects": "40"
-    },
-    {
-      "id": 3,
-      "title": "DevNest Community Meetup",
-      "date": "2025-10-15",
-      "category": "Community",
-      "image": "👥",
-      "description": "Monthly community gathering and networking event",
+      "image": "🚀",
+      "description": "DevNest's flagship prompt engineering hackathon",
       "participants": "150+",
-      "projects": "N/A"
-    },
-    {
-      "id": 4,
-      "title": "Cloud Computing Bootcamp",
-      "date": "2025-09-28",
-      "category": "Bootcamp",
-      "image": "☁️",
-      "description": "Intensive 2-week course on AWS and cloud architecture",
-      "participants": "100+",
-      "projects": "25"
-    },
-    {
-      "id": 5,
-      "title": "Cybersecurity Awareness Campaign",
-      "date": "2025-09-10",
-      "category": "Campaign",
-      "image": "🔒",
-      "description": "Educational initiative on digital safety and ethics",
-      "participants": "300+",
-      "projects": "N/A"
-    },
-    {
-      "id": 6,
-      "title": "Web Development Sprint",
-      "date": "2025-08-20",
-      "category": "Sprint",
-      "image": "🌐",
-      "description": "Hands-on coding sprint building real projects",
-      "participants": "180+",
-      "projects": "45"
+      "projects": "30"
     }
   ]
 }

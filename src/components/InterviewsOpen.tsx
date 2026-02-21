@@ -14,7 +14,7 @@ export function InterviewsOpen() {
   ];
 
   return (
-    <section className="relative py-12 sm:py-16 bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 overflow-hidden rounded-xl my-8 sm:my-12 mx-4 sm:mx-0">
+    <section className="relative py-12 sm:py-16 overflow-hidden rounded-2xl my-8 sm:my-12 mx-4 sm:mx-0 glass-effect border border-border">
       {/* Removed animated background - using global background from Layout */}
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
