@@ -29,7 +29,7 @@ const TextType = ({
   as: Component = 'div',
   typingSpeed = 50,
   initialDelay = 0,
-  pauseDuration = 1200,
+  pauseDuration = 2000,
   deletingSpeed = 30,
   loop = true,
   className = '',
@@ -50,7 +50,6 @@ const TextType = ({
   const [isDeleting, setIsDeleting] = useState(false);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(!startOnVisible);
-  const [hasStarted, setHasStarted] = useState(false);
   const cursorRef = useRef<HTMLSpanElement>(null);
   const containerRef = useRef<HTMLElement>(null);
 
@@ -87,14 +86,13 @@ const TextType = ({
 
   useEffect(() => {
     if (showCursor && cursorRef.current) {
-      gsap.set(cursorRef.current, { opacity: 1, force3D: true });
+      gsap.set(cursorRef.current, { opacity: 1 });
       gsap.to(cursorRef.current, {
         opacity: 0,
         duration: cursorBlinkDuration,
         repeat: -1,
         yoyo: true,
-        ease: 'power2.inOut',
-        force3D: true
+        ease: 'power2.inOut'
       });
     }
   }, [showCursor, cursorBlinkDuration]);
@@ -121,7 +119,7 @@ const TextType = ({
 
           setCurrentTextIndex(prev => (prev + 1) % textArray.length);
           setCurrentCharIndex(0);
-          timeout = setTimeout(() => { }, 100);
+          timeout = setTimeout(() => {}, pauseDuration);
         } else {
           timeout = setTimeout(() => {
             setDisplayedText(prev => prev.slice(0, -1));
@@ -129,7 +127,6 @@ const TextType = ({
         }
       } else {
         if (currentCharIndex < processedText.length) {
-          if (!hasStarted) setHasStarted(true);
           timeout = setTimeout(
             () => {
               setDisplayedText(prev => prev + processedText[currentCharIndex]);
@@ -153,24 +150,7 @@ const TextType = ({
     }
 
     return () => clearTimeout(timeout);
-  }, [
-    currentCharIndex,
-    displayedText,
-    isDeleting,
-    typingSpeed,
-    deletingSpeed,
-    pauseDuration,
-    textArray,
-    currentTextIndex,
-    loop,
-    initialDelay,
-    isVisible,
-    reverseMode,
-    variableSpeed,
-    onSentenceComplete,
-    hasStarted,
-    getRandomSpeed
-  ]);
+  }, [currentCharIndex, displayedText, isDeleting, typingSpeed, deletingSpeed, pauseDuration, textArray, currentTextIndex, loop, initialDelay, isVisible, reverseMode, variableSpeed, onSentenceComplete, getRandomSpeed]);
 
   const shouldHideCursor =
     hideCursorWhileTyping && (currentCharIndex < textArray[currentTextIndex].length || isDeleting);
@@ -180,10 +160,9 @@ const TextType = ({
     {
       ref: containerRef,
       className: `inline-block whitespace-pre-wrap tracking-tight ${className}`,
-      style: { willChange: 'contents', transform: 'translateZ(0)' },
       ...props
     },
-    <span className="inline" style={{ color: getCurrentTextColor() || 'inherit', transform: 'translateZ(0)', willChange: 'contents' }}>
+    <span className="inline" style={{ color: getCurrentTextColor() || 'inherit' }}>
       {displayedText}
     </span>,
     showCursor && (

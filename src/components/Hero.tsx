@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -20,6 +20,8 @@ const HERO_QUOTES = [
 ] as const;
 
 export function Hero() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(true);
   const [counters, setCounters] = useState({
     members: 0,
     events: 0,
@@ -67,22 +69,45 @@ export function Hero() {
     return () => clearInterval(quoteInterval);
   }, []);
 
+  // Pause FaultyTerminal when not visible
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsVisible(entry.isIntersecting);
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-background via-background to-muted/30">
+    <div ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-background via-background to-muted/30">
       {/* FaultyTerminal Background */}
       <div className="absolute inset-0 z-0 opacity-20">
         <FaultyTerminal
-          scale={0.7}
-          gridMul={[12, 12]}
-          digitSize={0.5}
-          timeScale={1}
-          scanlineIntensity={0.3}
-          glitchAmount={0.2}
-          flickerAmount={0.1}
-          noiseAmp={0.05}
-          chromaticAberration={0.002}
+          scale={1.5}
+          gridMul={[2, 1]}
+          digitSize={1.2}
+          timeScale={0.5}
+          scanlineIntensity={0.5}
+          glitchAmount={1}
+          flickerAmount={1}
+          noiseAmp={1}
+          chromaticAberration={0}
+          dither={0}
+          curvature={0.1}
           tint="#00B871"
-          pageLoadAnimation={false}
+          mouseReact
+          mouseStrength={0.5}
+          pageLoadAnimation
+          brightness={0.6}
+          pause={!isVisible}
         />
       </div>
 
@@ -151,11 +176,12 @@ export function Hero() {
               "Build. Innovate. Transform.",
               "Where ideas become reality"
             ]}
-            typingSpeed={40}
-            initialDelay={0}
-            pauseDuration={1200}
-            deletingSpeed={20}
-            loop={true}
+            typingSpeed={50}
+            pauseDuration={1000}
+            showCursor
+            cursorCharacter="|"
+            deletingSpeed={30}
+            cursorBlinkDuration={0.5}
             className="text-foreground"
           />
         </h2>
