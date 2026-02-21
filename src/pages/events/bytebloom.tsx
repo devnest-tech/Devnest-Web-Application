@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { CheckCircle2, Clock, MapPin, ShieldCheck, Users, Zap } from "lucide-react";
+import Image from "next/image";
+import { CheckCircle2, Clock, MapPin, ShieldCheck, Users, Zap, Brain, Sparkles } from "lucide-react";
 
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
@@ -8,35 +9,40 @@ const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/DAeJBINDPNI64g6zV0b2TF";
 const CONTACT_EMAILS = [
 	"devnest.techclub@gmail.com"
 ] as const;
+const STUDENT_COORDINATOR = "+91 80921 37404";
+const FACULTY_COORDINATOR = "+91 60050 17400";
 
-const bytebloomFacts = [
+const promptathonFacts = [
 	{ label: "Eligibility", value: "Open to all current college students" },
-	{ label: "Team Size", value: "2 – 4 members (cross-department welcome)" },
-	{ label: "Fee", value: "₹100 per participant" },
-	{ label: "Deadline", value: "28 October 2025" },
+	{ label: "Competition Type", value: "AI Prompt Engineering" },
+	{ label: "Venue", value: "IBM Lab" },
+	{ label: "Date", value: "25 February 2025" },
+	{ label: "Time", value: "11:00 AM to 3:00 PM" },
 ];
 
 const whatsInStoreList = [
-	"Welcome kit + kickoff briefing at DevNest",
-	"12 hours of ideation, prototyping, and mentoring",
-	"Challenge statements inspired by real-world tech problems",
-	"Final pitching and jury feedback to wrap up",
+	"Not Speed. Not Code. Just Pure Thinking Power",
+	"Craft prompts that push AI past the obvious",
+	"Learn to control intelligence with words",
+	"Expert mentorship and real-time feedback",
+	"Network with AI enthusiasts and industry experts",
 ];
 
 const whyJoinList = [
-	"Win exciting cash prizes and showcase-ready creds",
-	"Earn participation certificates for every participant",
-	"Network with mentors, campus ambassadors, and partner teams",
-	"Ship something meaningful in a high-energy builder marathon",
+	"Master the art of AI communication",
+	"Win exciting prizes and recognition",
+	"Earn participation certificates",
+	"If you can ask better, you win",
+	"Develop critical thinking and problem-solving skills",
 ];
 
 const heroStats = [
-	{ label: "Duration", value: "12-hour sprint", icon: Clock },
-	{ label: "Venue", value: "Lamrin Tech Skills University", icon: MapPin },
-	{ label: "Team Size", value: "2 – 4 builders", icon: Users },
+	{ label: "Duration", value: "4 hours", icon: Clock },
+	{ label: "Venue", value: "IBM Lab, LTSU", icon: MapPin },
+	{ label: "Focus", value: "Prompt Engineering", icon: Brain },
 ];
 
-export default function ByteBloomEventPage() {
+export default function PromptatonEventPage() {
 	return (
 		<Layout>
 			<div className="min-h-screen bg-gradient-to-b from-background to-muted/40 py-16">
@@ -44,14 +50,15 @@ export default function ByteBloomEventPage() {
 					<section className="text-center mb-16 space-y-6">
 						<div>
 							<span className="inline-block rounded-full border border-primary/40 bg-primary/10 px-5 py-2 text-sm font-semibold text-primary">
-								ByteBloom hackfest | 2025 Edition
+								Promptathon in Yuva Kaushal | 2025
 							</span>
 						</div>
 						<h1 className="text-4xl sm:text-5xl font-poppins font-bold">
-							Build Bold at ByteBloom hackfest
+							Where WORDS CONTROL INTELLIGENCE
 						</h1>
-						<p className="text-muted-foreground max-w-3xl mx-auto">
-							12 hours of rapid prototyping, real real-world problem statements, campus-wide collaboration, and a purpose-built DevNest registration hub. Everything you need to get your squad signed up lives right here.
+						<p className="text-muted-foreground max-w-3xl mx-auto text-lg">
+							Not Speed. Not Code. Just Pure Thinking Power. Craft prompts that push AI past the obvious.
+							<strong className="text-primary block mt-2">If you can ask better, you win.</strong>
 						</p>
 						<div className="grid gap-4 sm:grid-cols-3">
 							{heroStats.map((stat) => (
@@ -80,29 +87,35 @@ export default function ByteBloomEventPage() {
 						</div>
 					</section>
 
-					<ByteBloomDetailsSection />
+					<PromptatonDetailsSection />
 				</div>
 			</div>
 		</Layout>
 	);
 }
 
-const ByteBloomDetailsSection = () => (
-	<section id="bytebloom-details" className="space-y-10">
+const PromptatonDetailsSection = () => (
+	<section id="promptathon-details" className="space-y-10">
 		<div className="glass-effect rounded-3xl border border-border/40 bg-background/70 p-8 text-center">
 			<p className="text-sm uppercase tracking-[0.3em] text-primary mb-3">
-				ByteBloom hackfest | 2025 Edition
+				Promptathon in Yuva Kaushal | 2025
 			</p>
 			<h2 className="text-4xl font-poppins font-bold mb-4">
-				Welcome to ByteBloom hackfest 2025! 🚀
+				Welcome to Promptathon 2025! ⚡
 			</h2>
-			<p className="text-muted-foreground max-w-3xl mx-auto">
-				Hosted by DevNest Technical Club, ByteBloom hackfest is a 12-hour burst of collaboration where ideas meet execution and creativity meets code. Challenge your skills, brainstorm real-world tech solutions, and build alongside fellow innovators.
+			<p className="text-muted-foreground max-w-3xl mx-auto mb-4">
+				Presented by Lamrin Tech Skills University Punjab and DevNest. Promptathon is a unique AI prompt engineering competition where your words become your weapon. This is not about speed or code – it's about pure thinking power and your ability to communicate with AI effectively.
 			</p>
+			<div className="max-w-2xl mx-auto mt-6 p-6 bg-primary/10 rounded-2xl border border-primary/30">
+				<h3 className="text-xl font-bold mb-3 text-primary">PROMPT SMARTER. THINK DEEPER. DOMINATE LOUDER.</h3>
+				<p className="text-muted-foreground italic">
+					"Craft prompts that push AI past the obvious. If you can <strong>ASK BETTER</strong>, you <strong>WIN</strong>."
+				</p>
+			</div>
 		</div>
 
-		<div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-			{bytebloomFacts.map((fact) => (
+		<div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+			{promptathonFacts.map((fact) => (
 				<div
 					key={fact.label}
 					className="glass-effect rounded-2xl border border-border/40 p-5 text-left"
@@ -155,10 +168,20 @@ const ByteBloomDetailsSection = () => (
 		</div>
 
 		<div className="glass-effect rounded-3xl border border-border/40 p-6">
-			<h3 className="text-xl font-semibold mb-4">Payment & Support</h3>
-			<p className="text-muted-foreground mb-3">
-				A registration fee of <strong>₹100 per participant</strong> applies. Keep your transaction ID handy for submitting the form. Once paid, make sure every teammate has joined the official WhatsApp group for real-time announcements.
-			</p>
+			<h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+				<Sparkles className="w-5 h-5 text-primary" />
+				Contact & Support
+			</h3>
+			<div className="grid gap-4 md:grid-cols-2 mb-4">
+				<div className="p-4 bg-primary/10 rounded-lg">
+					<p className="text-sm text-muted-foreground mb-1">Student Coordinator</p>
+					<p className="font-semibold text-lg">{STUDENT_COORDINATOR}</p>
+				</div>
+				<div className="p-4 bg-secondary/10 rounded-lg">
+					<p className="text-sm text-muted-foreground mb-1">Faculty Coordinator</p>
+					<p className="font-semibold text-lg">{FACULTY_COORDINATOR}</p>
+				</div>
+			</div>
 			<div className="flex flex-wrap gap-3 mb-4">
 				<Button asChild size="lg" className="gap-2 font-semibold">
 					<Link href="/events/bytebloom-register">
@@ -180,6 +203,23 @@ const ByteBloomDetailsSection = () => (
 			<p className="text-sm text-muted-foreground">
 				For queries, reach us at {CONTACT_EMAILS[0]}.
 			</p>
+		</div>
+
+		{/* Event Poster Section */}
+		<div className="glass-effect rounded-3xl border border-border/40 p-6">
+			<h3 className="text-xl font-semibold mb-4 text-center">Event Poster</h3>
+			<div className="max-w-3xl mx-auto">
+				<div className="relative rounded-xl overflow-hidden bg-gradient-to-br from-primary/20 to-background border border-border">
+					<Image
+						src="/events/promptathon/poster.jpg"
+						alt="Promptathon Event Poster"
+						width={768}
+						height={1024}
+						className="w-full h-auto"
+						priority
+					/>
+				</div>
+			</div>
 		</div>
 	</section>
 );

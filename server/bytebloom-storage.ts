@@ -7,14 +7,10 @@ export type ByteBloomSubmissionRecord = {
 	department: string;
 	whatsappNumber: string;
 	email: string;
+	participationType: "individual" | "team";
 	teamName: string;
-	teamSize: "2" | "3" | "4";
-	participant2: string;
-	participant2Roll: string;
-	participant3: string;
-	participant3Roll: string;
-	participant4: string;
-	participant4Roll: string;
+	teamMember2: string;
+	teamMember2Roll: string;
 	transactionId: string;
 	notes: string;
 };
@@ -33,7 +29,7 @@ export const getExistingRollConflicts = async (rolls: string[]) => {
 	}
 
 	try {
-		const submissionsRef = adminDb.collection("bytebloom-submissions");
+		const submissionsRef = adminDb.collection("promptathon-submissions");
 		const snapshot = await submissionsRef.get();
 		const conflicts = new Set<string>();
 
@@ -41,9 +37,7 @@ export const getExistingRollConflicts = async (rolls: string[]) => {
 			const data = doc.data();
 			const existingRolls = [
 				data.rollNumber,
-				data.participant2Roll,
-				data.participant3Roll,
-				data.participant4Roll,
+				data.teamMember2Roll,
 			]
 				.map(normalizeRoll)
 				.filter((roll) => roll.length > 0);
@@ -66,7 +60,7 @@ export const appendByteBloomSubmission = async (record: ByteBloomSubmissionRecor
 	const { adminDb } = initializeFirebaseAdmin();
 
 	try {
-		const submissionsRef = adminDb.collection("bytebloom-submissions");
+		const submissionsRef = adminDb.collection("promptathon-submissions");
 		await submissionsRef.add({
 			...record,
 			createdAt: new Date().toISOString(),

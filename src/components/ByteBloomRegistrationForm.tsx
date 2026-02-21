@@ -29,7 +29,6 @@ import { useToast } from "@/components/ui/use-toast";
 const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/DAeJBINDPNI64g6zV0b2TF";
 const CONTACT_EMAILS = [
 	"devnest.techclub@gmail.com",
-	"hemanthchakka2007@gmail.com",
 ] as const;
 const PAYMENT_QR_ENDPOINT = "/api/payment-qr";
 
@@ -41,14 +40,10 @@ export type ByteBloomFormValues = {
 	department: string;
 	whatsappNumber: string;
 	email: string;
+	participationType: "individual" | "team";
 	teamName: string;
-	teamSize: "2" | "3" | "4";
-	participant2: string;
-	participant2Roll: string;
-	participant3: string;
-	participant3Roll: string;
-	participant4: string;
-	participant4Roll: string;
+	teamMember2: string;
+	teamMember2Roll: string;
 	transactionId: string;
 	joinedWhatsapp: boolean;
 	notes: string;
@@ -60,14 +55,10 @@ const bytebloomDefaultValues: ByteBloomFormValues = {
 	department: "",
 	whatsappNumber: "",
 	email: "",
+	participationType: "individual",
 	teamName: "",
-	teamSize: "2",
-	participant2: "",
-	participant2Roll: "",
-	participant3: "",
-	participant3Roll: "",
-	participant4: "",
-	participant4Roll: "",
+	teamMember2: "",
+	teamMember2Roll: "",
 	transactionId: "",
 	joinedWhatsapp: false,
 	notes: "",
@@ -86,9 +77,7 @@ export const ByteBloomRegistrationForm = () => {
 		defaultValues: bytebloomDefaultValues,
 	});
 
-	const teamSize = useWatch({ control: form.control, name: "teamSize" });
-
-	const numericTeamSize = Number(teamSize);
+	const participationType = useWatch({ control: form.control, name: "participationType" });
 
 	const markRollConflicts = useCallback(
 		(conflicts: string[]) => {
@@ -106,9 +95,7 @@ export const ByteBloomRegistrationForm = () => {
 				value: string;
 			}> = [
 					{ field: "rollNumber", value: values.rollNumber },
-					{ field: "participant2Roll", value: values.participant2Roll },
-					{ field: "participant3Roll", value: values.participant3Roll },
-					{ field: "participant4Roll", value: values.participant4Roll },
+					{ field: "teamMember2Roll", value: values.teamMember2Roll },
 				];
 
 			rollFields.forEach(({ field, value }) => {
@@ -167,20 +154,17 @@ export const ByteBloomRegistrationForm = () => {
 	}, [loadPaymentQr]);
 
 	useEffect(() => {
-		if (numericTeamSize < 4) {
-			form.setValue("participant4", "");
-			form.setValue("participant4Roll", "");
+		if (participationType === "individual") {
+			form.setValue("teamName", "");
+			form.setValue("teamMember2", "");
+			form.setValue("teamMember2Roll", "");
 		}
-		if (numericTeamSize < 3) {
-			form.setValue("participant3", "");
-			form.setValue("participant3Roll", "");
-		}
-	}, [numericTeamSize, form]);
+	}, [participationType, form]);
 
 	const onSubmit = async (values: ByteBloomFormValues) => {
 		setStatus("loading");
 		try {
-			const response = await fetch("/api/bytebloom", {
+			const response = await fetch("/api/promptathon", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -227,7 +211,7 @@ export const ByteBloomRegistrationForm = () => {
 
 			form.reset(bytebloomDefaultValues);
 		} catch (error) {
-			console.error("ByteBloom hackfest submission error", error);
+			console.error("Promptathon submission error", error);
 			const fallbackMessage = "Please try again or email us at devnest.techclub@gmail.com.";
 			const description =
 				error instanceof Error && error.message ? error.message : fallbackMessage;
@@ -243,18 +227,19 @@ export const ByteBloomRegistrationForm = () => {
 
 	return (
 		<section
-			id="bytebloom-form"
+			id="promptathon-form"
 			className="glass-effect rounded-3xl border border-border/50 bg-background/80 p-8 shadow-2xl"
 		>
 			<div className="text-center max-w-3xl mx-auto mb-10">
 				<span className="inline-block px-4 py-2 rounded-full bg-secondary/20 text-secondary text-sm font-semibold mb-4">
-					ByteBloom hackfest | Registration
+					Promptathon | Registration
 				</span>
 				<h2 className="text-3xl font-poppins font-bold mb-3">
-					Submit your squad details
+					Register for Promptathon
 				</h2>
 				<p className="text-muted-foreground">
-					Fill in the complete team roster, confirm payment, and keep the WhatsApp group joined for all event updates. Fields marked with * are mandatory.
+					Fill in your details to participate. You can register as an individual or as a team (max 2 members).
+					Fields marked with * are mandatory.
 				</p>
 			</div>
 
@@ -262,9 +247,9 @@ export const ByteBloomRegistrationForm = () => {
 				<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
 					<div className="space-y-4">
 						<div>
-							<h3 className="text-xl font-semibold">Team Lead Details</h3>
+							<h3 className="text-xl font-semibold">Participant Details</h3>
 							<p className="text-sm text-muted-foreground">
-								We'll reach out to the lead for confirmations and logistics.
+								We'll use this information to contact you about the event.
 							</p>
 						</div>
 						<div className="grid gap-6 md:grid-cols-2">
@@ -276,7 +261,7 @@ export const ByteBloomRegistrationForm = () => {
 									<FormItem>
 										<FormLabel>Full Name *</FormLabel>
 										<FormControl>
-											<Input placeholder="Aditi Sharma" {...field} />
+											<Input placeholder="Your full name" {...field} />
 										</FormControl>
 										<FormMessage />
 									</FormItem>
@@ -302,9 +287,9 @@ export const ByteBloomRegistrationForm = () => {
 								rules={{ required: "Department & year is required" }}
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Department & Year *</FormLabel>
+										<FormLabel>Department *</FormLabel>
 										<FormControl>
-											<Input placeholder="CSE • 3rd Year" {...field} />
+											<Input placeholder="e.g., Computer Science" {...field} />
 										</FormControl>
 										<FormMessage />
 									</FormItem>
@@ -316,15 +301,15 @@ export const ByteBloomRegistrationForm = () => {
 								rules={{
 									required: "WhatsApp number is required",
 									pattern: {
-										value: /^[0-9+\-\s]{10,}$/,
-										message: "Enter a valid phone number",
+										value: /^[6-9]\d{9}$/,
+										message: "Enter a valid 10-digit mobile number",
 									},
 								}}
 								render={({ field }) => (
 									<FormItem>
 										<FormLabel>WhatsApp Number *</FormLabel>
 										<FormControl>
-											<Input placeholder="+91 98765 43210" {...field} />
+											<Input placeholder="9876543210" {...field} />
 										</FormControl>
 										<FormMessage />
 									</FormItem>
@@ -343,9 +328,9 @@ export const ByteBloomRegistrationForm = () => {
 								}}
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Email ID *</FormLabel>
+										<FormLabel>Email Address *</FormLabel>
 										<FormControl>
-											<Input placeholder="you@college.edu" type="email" {...field} />
+											<Input type="email" placeholder="you@example.com" {...field} />
 										</FormControl>
 										<FormMessage />
 									</FormItem>
@@ -354,97 +339,72 @@ export const ByteBloomRegistrationForm = () => {
 						</div>
 					</div>
 
-					<div className="space-y-4 pt-8 border-t border-border/60">
+					<div className="space-y-4">
 						<div>
-							<h3 className="text-xl font-semibold">Team Roster</h3>
+							<h3 className="text-xl font-semibold">Participation Type</h3>
 							<p className="text-sm text-muted-foreground">
-								Tell us about the squad you are bringing to ByteBloom hackfest and add each member's roll number for verification.
+								Choose whether you want to participate individually or as a team (max 2 members).
 							</p>
 						</div>
-						<div className="grid gap-6 md:grid-cols-2">
+						<FormField
+							control={form.control}
+							name="participationType"
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel>I want to participate as *</FormLabel>
+									<Select onValueChange={field.onChange} defaultValue={field.value}>
+										<FormControl>
+											<SelectTrigger>
+												<SelectValue placeholder="Select participation type" />
+											</SelectTrigger>
+										</FormControl>
+										<SelectContent>
+											<SelectItem value="individual">Individual</SelectItem>
+											<SelectItem value="team">Team (2 members)</SelectItem>
+										</SelectContent>
+									</Select>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+					</div>
+
+					{participationType === "team" && (
+						<div className="space-y-4">
+							<div>
+								<h3 className="text-xl font-semibold">Team Details</h3>
+								<p className="text-sm text-muted-foreground">
+									Provide your team name and second member details.
+								</p>
+							</div>
 							<FormField
 								control={form.control}
 								name="teamName"
-								rules={{ required: "Team name is required" }}
+								rules={{
+									required: participationType === "team" ? "Team name is required" : false,
+								}}
 								render={({ field }) => (
 									<FormItem>
 										<FormLabel>Team Name *</FormLabel>
 										<FormControl>
-											<Input placeholder="Team Quantum" {...field} />
+											<Input placeholder="Choose a creative team name" {...field} />
 										</FormControl>
 										<FormMessage />
 									</FormItem>
 								)}
 							/>
-							<FormField
-								control={form.control}
-								name="teamSize"
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Team Size *</FormLabel>
-										<Select onValueChange={field.onChange} value={field.value}>
-											<FormControl>
-												<SelectTrigger>
-													<SelectValue placeholder="Select team size" />
-												</SelectTrigger>
-											</FormControl>
-											<SelectContent>
-												<SelectItem value="2">2 Members</SelectItem>
-												<SelectItem value="3">3 Members</SelectItem>
-												<SelectItem value="4">4 Members</SelectItem>
-											</SelectContent>
-										</Select>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-						</div>
-						<div className="grid gap-6 md:grid-cols-2">
-							<FormField
-								control={form.control}
-								name="participant2"
-								rules={{ required: "Participant 2 is required" }}
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Participant 2 *</FormLabel>
-										<FormControl>
-											<Input placeholder="Second teammate" {...field} />
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<FormField
-								control={form.control}
-								name="participant2Roll"
-								rules={{ required: "Roll number for participant 2 is required" }}
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Participant 2 Roll No *</FormLabel>
-										<FormControl>
-											<Input placeholder="2410XXXXXX" {...field} />
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-						</div>
-						{numericTeamSize >= 3 && (
 							<div className="grid gap-6 md:grid-cols-2">
 								<FormField
 									control={form.control}
-									name="participant3"
+									name="teamMember2"
 									rules={{
-										validate: (value) =>
-											numericTeamSize >= 3
-												? !!value?.trim() || "Participant 3 is required"
-												: true,
+										required: participationType === "team" ? "Team member name is required" : false,
 									}}
 									render={({ field }) => (
 										<FormItem>
-											<FormLabel>Participant 3 *</FormLabel>
+											<FormLabel>Team Member 2 Name *</FormLabel>
 											<FormControl>
-												<Input placeholder="Third teammate" {...field} />
+												<Input placeholder="Full name" {...field} />
 											</FormControl>
 											<FormMessage />
 										</FormItem>
@@ -452,74 +412,29 @@ export const ByteBloomRegistrationForm = () => {
 								/>
 								<FormField
 									control={form.control}
-									name="participant3Roll"
+									name="teamMember2Roll"
 									rules={{
-										validate: (value) =>
-											numericTeamSize >= 3
-												? !!value?.trim() || "Roll number for participant 3 is required"
-												: true,
+										required: participationType === "team" ? "Roll number is required" : false,
 									}}
 									render={({ field }) => (
 										<FormItem>
-											<FormLabel>Participant 3 Roll No *</FormLabel>
+											<FormLabel>Team Member 2 Roll No *</FormLabel>
 											<FormControl>
-												<Input placeholder="2410XXXXXX" {...field} />
+												<Input placeholder="241000X00XX" {...field} />
 											</FormControl>
 											<FormMessage />
 										</FormItem>
 									)}
 								/>
 							</div>
-						)}
-						{numericTeamSize === 4 && (
-							<div className="grid gap-6 md:grid-cols-2">
-								<FormField
-									control={form.control}
-									name="participant4"
-									rules={{
-										validate: (value) =>
-											numericTeamSize === 4
-												? !!value?.trim() || "Participant 4 is required"
-												: true,
-									}}
-									render={({ field }) => (
-										<FormItem>
-											<FormLabel>Participant 4 *</FormLabel>
-											<FormControl>
-												<Input placeholder="Fourth teammate" {...field} />
-											</FormControl>
-											<FormMessage />
-										</FormItem>
-									)}
-								/>
-								<FormField
-									control={form.control}
-									name="participant4Roll"
-									rules={{
-										validate: (value) =>
-											numericTeamSize === 4
-												? !!value?.trim() || "Roll number for participant 4 is required"
-												: true,
-									}}
-									render={({ field }) => (
-										<FormItem>
-											<FormLabel>Participant 4 Roll No *</FormLabel>
-											<FormControl>
-												<Input placeholder="2410XXXXXX" {...field} />
-											</FormControl>
-											<FormMessage />
-										</FormItem>
-									)}
-								/>
-							</div>
-						)}
-					</div>
+						</div>
+					)}
 
-					<div className="space-y-6 pt-8 border-t border-border/60">
+					<div className="space-y-4">
 						<div>
-							<h3 className="text-xl font-semibold">Payment & Confirmation</h3>
+							<h3 className="text-xl font-semibold">Payment Details</h3>
 							<p className="text-sm text-muted-foreground">
-								Pay ₹100 per participant, keep the transaction reference handy, and upload the proof of payment.
+								Scan the QR code below to complete payment and enter your transaction ID.
 							</p>
 						</div>
 						<div className="grid gap-8 lg:grid-cols-[1.1fr,0.9fr] items-start">
@@ -598,7 +513,7 @@ export const ByteBloomRegistrationForm = () => {
 									{qrStatus === "loaded" && qrSrc && (
 										<Image
 											src={qrSrc}
-											alt="ByteBloom hackfest payment QR"
+											alt="Promptathon payment QR"
 											width={320}
 											height={320}
 											className="h-auto w-full rounded-xl"
