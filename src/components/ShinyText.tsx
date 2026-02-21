@@ -1,5 +1,6 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
+import React, { useState, useCallback, useEffect, useRef, useMemo } from 'react';
 import { motion, useMotionValue, useAnimationFrame, useTransform } from 'motion/react';
+import { useTheme } from 'next-themes';
 
 interface ShinyTextProps {
   text: string;
@@ -20,15 +21,29 @@ const ShinyText: React.FC<ShinyTextProps> = ({
   disabled = false,
   speed = 2,
   className = '',
-  color = '#b5b5b5',
-  shineColor = '#ffffff',
+  color,
+  shineColor,
   spread = 120,
   yoyo = false,
   pauseOnHover = false,
   direction = 'left',
   delay = 0
 }) => {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Use silver/grey ONLY in dark mode, inherit in light mode
+  const isDark = theme === 'dark';
+  const defaultColor = isDark ? '#b5b5b5' : 'inherit';
+  const defaultShineColor = isDark ? '#ffffff' : '#00B871';
+
+  const textColor = color ?? defaultColor;
+  const shine = shineColor ?? defaultShineColor;
   const progress = useMotionValue(0);
   const elapsedRef = useRef(0);
   const lastTimeRef = useRef<number | null>(null);
@@ -108,8 +123,8 @@ const ShinyText: React.FC<ShinyTextProps> = ({
     if (pauseOnHover) setIsPaused(false);
   }, [pauseOnHover]);
 
-  const gradientStyle: React.CSSProperties = {
-    backgroundImage: `linear-gradient(${spread}deg, ${color} 0%, ${color} 35%, ${shineColor} 50%, ${color} 65%, ${color} 100%)`,
+  const gradientStyle: React.CSSProperties = useMemo(() => ({
+    backgroundImage: `linear-gradient(${spread}deg, ${textColor} 0%, ${textColor} 35%, ${shine} 50%, ${textColor} 65%, ${textColor} 100%)`,
     backgroundSize: '200% auto',
     WebkitBackgroundClip: 'text',
     backgroundClip: 'text',
@@ -117,10 +132,15 @@ const ShinyText: React.FC<ShinyTextProps> = ({
     transform: 'translateZ(0)',
     willChange: 'background-position',
     backfaceVisibility: 'hidden' as const
-  };
+  }), [spread, textColor, shine, theme]);
+
+  if (!mounted) {
+    return <span className={`inline-block ${className}`}>{text}</span>;
+  }
 
   return (
     <motion.span
+      key={`shiny-${theme}`}
       className={`inline-block ${className}`}
       style={{ ...gradientStyle, backgroundPosition }}
       onMouseEnter={handleMouseEnter}

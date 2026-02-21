@@ -1,15 +1,11 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Zap, Users, Trophy, Building2 } from "lucide-react";
 import ShinyText from "@/components/ShinyText";
 import TextType from "@/components/TextType";
-import dynamic from "next/dynamic";
-
-const FaultyTerminal = dynamic(() => import("@/components/FaultyTerminal"), {
-  ssr: false,
-});
+import StarBorder from "@/components/StarBorder";
 
 const HERO_QUOTES = [
   '"Build something that makes a difference."',
@@ -20,8 +16,6 @@ const HERO_QUOTES = [
 ] as const;
 
 export function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(true);
   const [counters, setCounters] = useState({
     members: 0,
     events: 0,
@@ -69,47 +63,8 @@ export function Hero() {
     return () => clearInterval(quoteInterval);
   }, []);
 
-  // Pause FaultyTerminal when not visible
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          setIsVisible(entry.isIntersecting);
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(containerRef.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <div ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-background via-background to-muted/30">
-      {/* FaultyTerminal Background */}
-      <div className="absolute inset-0 z-0 opacity-20">
-        <FaultyTerminal
-          scale={1.5}
-          gridMul={[2, 1]}
-          digitSize={1.2}
-          timeScale={0.5}
-          scanlineIntensity={0.5}
-          glitchAmount={1}
-          flickerAmount={1}
-          noiseAmp={1}
-          chromaticAberration={0}
-          dither={0}
-          curvature={0.1}
-          tint="#00B871"
-          mouseReact
-          mouseStrength={0.5}
-          pageLoadAnimation
-          brightness={0.6}
-          pause={!isVisible}
-        />
-      </div>
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
 
       {/* Animated Dot Matrix Background */}
       <div className="absolute inset-0 opacity-[0.15] z-[1]" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
@@ -142,7 +97,7 @@ export function Hero() {
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
         {/* Tagline */}
         <div className="mb-6 inline-block">
-          <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-medium">
+          <span className="inline-block px-4 py-2 rounded-full bg-primary/15 border border-primary/40 text-primary text-sm font-semibold shadow-sm">
             🚀 Google Campus Ambassador Initiative
           </span>
         </div>
@@ -222,7 +177,7 @@ export function Hero() {
 
         {/* Rotating Quote */}
         <div className="mb-8 sm:mb-12 text-center px-4">
-          <div className="glass-effect rounded-xl p-4 sm:p-6 inline-block max-w-2xl w-full">
+          <div className="glass-effect rounded-2xl p-4 sm:p-6 inline-block max-w-2xl w-full border border-border">
             <p className="text-base sm:text-lg md:text-xl italic text-foreground font-manrope">
               {displayedQuote}
             </p>
@@ -231,21 +186,25 @@ export function Hero() {
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 gap-4 md:gap-8 mt-12 sm:mt-16 px-2 max-w-2xl mx-auto">
-          <div className="glass-effect rounded-lg p-4 sm:p-6 hover-lift">
-            <Users className="w-6 h-6 sm:w-8 sm:h-8 text-primary mx-auto mb-2" />
-            <div className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-primary mb-1">
-              {counters.members}+
+          <StarBorder as="div" color="#00B871" speed="10s" thickness={2}>
+            <div className="glass-effect rounded-2xl p-4 sm:p-6 hover-lift group border-0 transition-all">
+              <Users className="w-6 h-6 sm:w-8 sm:h-8 text-primary mx-auto mb-2 group-hover:scale-110 transition-transform" />
+              <div className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-primary mb-1">
+                {counters.members}+
+              </div>
+              <p className="text-xs sm:text-sm text-muted-foreground">Community Members</p>
             </div>
-            <p className="text-xs sm:text-sm text-muted-foreground">Community Members</p>
-          </div>
+          </StarBorder>
 
-          <div className="glass-effect rounded-lg p-4 sm:p-6 hover-lift">
-            <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-primary mx-auto mb-2" />
-            <div className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-primary mb-1">
-              {counters.events}+
+          <StarBorder as="div" color="#00B871" speed="10s" thickness={2}>
+            <div className="glass-effect rounded-2xl p-4 sm:p-6 hover-lift group border-0 transition-all">
+              <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-primary mx-auto mb-2 group-hover:scale-110 transition-transform" />
+              <div className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-primary mb-1">
+                {counters.events}+
+              </div>
+              <p className="text-xs sm:text-sm text-muted-foreground">Tech Events</p>
             </div>
-            <p className="text-xs sm:text-sm text-muted-foreground">Tech Events</p>
-          </div>
+          </StarBorder>
         </div>
 
         {/* Scroll Indicator */}

@@ -84,7 +84,7 @@ export function About() {
   ];
 
   return (
-    <section className="relative py-16 sm:py-20 bg-gradient-to-b from-background via-background to-muted/30 overflow-hidden">
+    <section className="relative py-16 sm:py-20 overflow-hidden">
       {/* Animated Circuit Pattern Background */}
       <div className="absolute inset-0 opacity-[0.03]">
         <div className="absolute inset-0" style={{
@@ -113,30 +113,30 @@ export function About() {
         {/* Mission, Vision, Purpose */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-20">
           {/* Mission */}
-          <div className="glass-effect rounded-xl p-6 sm:p-8 hover-lift">
-            <div className="text-3xl sm:text-4xl mb-4">🎯</div>
-            <h3 className="text-lg sm:text-xl font-poppins font-bold mb-3 sm:mb-4">Our Mission</h3>
-            <p className="text-sm sm:text-base text-muted-foreground">
+          <div className="glass-effect rounded-2xl p-6 sm:p-8 hover-lift group border border-border hover:border-primary/40 transition-all">
+            <div className="text-4xl sm:text-5xl mb-4 group-hover:scale-110 transition-transform">🎯</div>
+            <h3 className="text-xl sm:text-2xl font-poppins font-bold mb-3 sm:mb-4 glow-text">Our Mission</h3>
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
               Learn by doing — we provide students with a platform to connect with the outer tech world more vividly and grow through real-world experiences.
             </p>
           </div>
 
           {/* Vision */}
-          <div className="glass-effect rounded-xl p-6 sm:p-8 hover-lift">
-            <div className="text-3xl sm:text-4xl mb-4">🚀</div>
-            <h3 className="text-lg sm:text-xl font-poppins font-bold mb-3 sm:mb-4">Our Vision</h3>
-            <p className="text-sm sm:text-base text-muted-foreground">
+          <div className="glass-effect rounded-2xl p-6 sm:p-8 hover-lift group border border-border hover:border-primary/40 transition-all">
+            <div className="text-4xl sm:text-5xl mb-4 group-hover:scale-110 transition-transform">🚀</div>
+            <h3 className="text-xl sm:text-2xl font-poppins font-bold mb-3 sm:mb-4 glow-text">Our Vision</h3>
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
               Cultivating a culture of curiosity, collaboration, and technical excellence that prepares every student to lead in the digital era.
             </p>
           </div>
 
           {/* Community */}
-          <div className="glass-effect rounded-xl p-6 sm:p-8 hover-lift">
-            <div className="text-3xl sm:text-4xl mb-4">🌟</div>
-            <h3 className="text-lg sm:text-xl font-poppins font-bold mb-3 sm:mb-4">
+          <div className="glass-effect rounded-2xl p-6 sm:p-8 hover-lift group border border-border hover:border-primary/40 transition-all">
+            <div className="text-4xl sm:text-5xl mb-4 group-hover:scale-110 transition-transform">🌟</div>
+            <h3 className="text-xl sm:text-2xl font-poppins font-bold mb-3 sm:mb-4 glow-text">
               Student-Driven
             </h3>
-            <p className="text-sm sm:text-base text-muted-foreground">
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
               A vibrant ecosystem led by Google Campus Ambassadors where diverse technical talents collaborate and innovate together.
             </p>
           </div>
@@ -153,11 +153,11 @@ export function About() {
               return (
                 <div
                   key={index}
-                  className="glass-effect rounded-lg p-5 sm:p-6 hover-lift transition-all hover:bg-primary/5"
+                  className="glass-effect rounded-2xl p-5 sm:p-6 hover-lift transition-all group border border-border hover:border-primary/40"
                 >
-                  <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-primary mb-3 sm:mb-4" />
+                  <Icon className="w-8 h-8 sm:w-10 sm:h-10 text-primary mb-3 sm:mb-4 group-hover:scale-110 transition-transform" />
                   <h4 className="text-base sm:text-lg font-poppins font-bold mb-2">{activity.title}</h4>
-                  <p className="text-xs sm:text-sm text-muted-foreground">
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                     {activity.description}
                   </p>
                 </div>
@@ -177,11 +177,11 @@ export function About() {
               return (
                 <div
                   key={index}
-                  className="glass-effect rounded-lg p-5 sm:p-6 hover-lift"
+                  className="glass-effect rounded-2xl p-5 sm:p-6 hover-lift group border border-border hover:border-primary/40 transition-all"
                 >
-                  <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-primary mb-3 sm:mb-4" />
+                  <Icon className="w-8 h-8 sm:w-10 sm:h-10 text-primary mb-3 sm:mb-4 group-hover:scale-110 transition-transform" />
                   <h4 className="text-base sm:text-lg font-poppins font-bold mb-2">{value.title}</h4>
-                  <p className="text-xs sm:text-sm text-muted-foreground">
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                     {value.description}
                   </p>
                 </div>
@@ -222,7 +222,7 @@ export function About() {
                     <div className="flex items-start gap-3 sm:gap-4">
                       <div className="text-2xl sm:text-3xl flex-shrink-0">{event.icon}</div>
                       <div className="flex-1">
-                        <div className="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-xs sm:text-sm font-semibold mb-2">
+                        <div className="inline-block px-3 py-1 rounded-full bg-primary/25 text-primary text-xs sm:text-sm font-semibold mb-2 border border-primary/20 shadow-sm">
                           {event.year}
                         </div>
                         <h4 className="text-lg sm:text-xl font-poppins font-bold mb-2">

@@ -45,11 +45,11 @@ const heroStats = [
 export default function PromptatonEventPage() {
 	return (
 		<Layout>
-			<div className="min-h-screen bg-gradient-to-b from-background to-muted/40 py-16">
+			<div className="min-h-screen py-16">
 				<div className="mx-auto max-w-6xl px-4 sm:px-6">
 					<section className="text-center mb-16 space-y-6">
 						<div>
-							<span className="inline-block rounded-full border border-primary/40 bg-primary/10 px-5 py-2 text-sm font-semibold text-primary">
+							<span className="inline-block rounded-full border border-primary/40 bg-primary/15 px-5 py-2 text-sm font-semibold text-primary shadow-sm">
 								Promptathon in Yuva Kaushal | 2025
 							</span>
 						</div>

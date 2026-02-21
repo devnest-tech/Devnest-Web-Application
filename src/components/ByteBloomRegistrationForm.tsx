@@ -541,7 +541,7 @@ export const ByteBloomRegistrationForm = () => {
 					</div>
 
 					<div className="space-y-4 pt-8 border-t border-border/60">
-						<div className="rounded-2xl border border-dashed border-primary/40 bg-primary/5 p-4 text-sm text-primary">
+						<div className="rounded-2xl border border-dashed border-primary/40 bg-primary/10 p-4 text-sm text-primary shadow-sm">
 							Uploading the wrong payment or incomplete team details may delay verification. Double-check everything before you hit submit.
 						</div>
 						<div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">

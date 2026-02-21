@@ -48,7 +48,7 @@ export default function CertificateDownloadPage() {
 			<div className="min-h-screen bg-gradient-to-b from-background to-muted/40 py-16">
 				<div className="mx-auto max-w-2xl px-4 sm:px-6">
 					<div className="text-center mb-8">
-						<div className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-semibold mb-4">
+						<div className="inline-block px-4 py-2 rounded-full bg-primary/15 border border-primary/40 text-primary text-sm font-semibold mb-4 shadow-sm">
 							<FileCheck className="inline-block w-4 h-4 mr-1" />
 							Certificate Download
 						</div>

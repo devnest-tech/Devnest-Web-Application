@@ -28,7 +28,7 @@ const blogs: Blog[] = blogsData.blogs;
 export default function BlogDetailPage({ blog, relatedBlogs }: BlogDetailProps) {
   return (
     <Layout>
-      <div className="min-h-screen py-12 bg-gradient-to-b from-background to-muted/30">
+      <div className="min-h-screen py-12">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="inline-flex mb-8">
             <Button asChild variant="outline" size="sm" className="gap-2">
@@ -46,7 +46,7 @@ export default function BlogDetailPage({ blog, relatedBlogs }: BlogDetailProps) 
 
             <div className="p-8 sm:p-12">
               <div className="mb-6">
-                <span className="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-sm font-semibold mb-4">
+                <span className="inline-block px-3 py-1 rounded-full bg-primary/25 text-primary text-sm font-semibold mb-4 border border-primary/20 shadow-sm">
                   {blog.category}
                 </span>
               </div>
@@ -91,7 +91,7 @@ export default function BlogDetailPage({ blog, relatedBlogs }: BlogDetailProps) 
                 </ul>
               </div>
 
-              <div className="bg-primary/10 rounded-lg p-6 mb-12 border border-primary/20">
+              <div className="bg-primary/15 rounded-lg p-6 mb-12 border border-primary/40 shadow-sm">
                 <div className="flex flex-wrap items-center justify-between gap-4">
                   <div>
                     <h3 className="font-poppins font-bold mb-1">Share this article</h3>
