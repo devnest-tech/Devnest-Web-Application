@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -89,6 +90,7 @@ export default function JoinPage() {
 
   return (
     <Layout>
+      <Head><title>DevNest | Join Us</title></Head>
       <div className="min-h-screen py-20 bg-gradient-to-b from-background to-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {!submitted ? (

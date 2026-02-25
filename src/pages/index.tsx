@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
@@ -8,6 +9,7 @@ import { DailyQuote } from "@/components/DailyQuote";
 export default function Index() {
   return (
     <Layout>
+      <Head><title>DevNest | Home</title></Head>
       <Hero />
       <InterviewsOpen />
       <About />

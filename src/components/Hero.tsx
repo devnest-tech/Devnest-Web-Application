@@ -105,13 +105,12 @@ export function Hero() {
         {/* Logo & Name */}
         <div className="mb-6 sm:mb-8 flex items-center justify-center gap-3 sm:gap-4">
           <Image
-            src="/logo.png"
+            src="/logo.svg"
             alt="DevNest Logo"
             width={80}
             height={80}
             priority
-            className="w-16 h-16 sm:w-20 sm:h-20 object-contain drop-shadow-lg shadow-primary/30 animate-bounce"
-            style={{ animationDuration: "3s" }}
+            className="w-16 h-16 sm:w-20 sm:h-20 object-contain drop-shadow-lg shadow-primary/30"
           />
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-poppins font-bold">
             <ShinyText

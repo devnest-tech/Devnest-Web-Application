@@ -22,18 +22,18 @@ const promptathonFacts = [
 
 const whatsInStoreList = [
 	"Not Speed. Not Code. Just Pure Thinking Power",
-	"Craft prompts that push AI past the obvious",
-	"Learn to control intelligence with words",
-	"Expert mentorship and real-time feedback",
-	"Network with AI enthusiasts and industry experts",
+	"Students crafted prompts that pushed AI past the obvious",
+	"Participants learned to control intelligence with words",
+	"Expert mentorship and real-time feedback provided",
+	"Networking with AI enthusiasts and industry experts",
 ];
 
 const whyJoinList = [
-	"Master the art of AI communication",
-	"Win exciting prizes and recognition",
-	"Earn participation certificates",
-	"If you can ask better, you win",
-	"Develop critical thinking and problem-solving skills",
+	"Mastered the art of AI communication",
+	"Won exciting prizes and recognition",
+	"Earned participation certificates",
+	"Those who asked better, won",
+	"Developed critical thinking and problem-solving skills",
 ];
 
 const heroStats = [
@@ -47,6 +47,18 @@ export default function PromptatonEventPage() {
 		<Layout>
 			<div className="min-h-screen py-16">
 				<div className="mx-auto max-w-6xl px-4 sm:px-6">
+					{/* Success Banner */}
+					<div className="mb-8 glass-effect rounded-2xl border-2 border-primary/50 bg-gradient-to-r from-primary/20 to-secondary/20 p-6 text-center">
+						<h2 className="text-2xl sm:text-3xl font-bold text-primary mb-2 flex items-center justify-center gap-2">
+							<Sparkles className="h-6 w-6" />
+							Event Successfully Completed!
+							<Sparkles className="h-6 w-6" />
+						</h2>
+						<p className="text-lg text-muted-foreground">
+							Promptathon 2025 was a grand success with 100+ participants showcasing exceptional AI prompt engineering skills! 🎉
+						</p>
+					</div>
+
 					<section className="text-center mb-16 space-y-6">
 						<div>
 							<span className="inline-block rounded-full border border-primary/40 bg-primary/15 px-5 py-2 text-sm font-semibold text-primary shadow-sm">
@@ -54,11 +66,11 @@ export default function PromptatonEventPage() {
 							</span>
 						</div>
 						<h1 className="text-4xl sm:text-5xl font-poppins font-bold">
-							Where WORDS CONTROL INTELLIGENCE
+							Where WORDS CONTROLLED INTELLIGENCE
 						</h1>
 						<p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-							Not Speed. Not Code. Just Pure Thinking Power. Craft prompts that push AI past the obvious.
-							<strong className="text-primary block mt-2">If you can ask better, you win.</strong>
+							Not Speed. Not Code. Just Pure Thinking Power. Students crafted prompts that pushed AI past the obvious.
+							<strong className="text-primary block mt-2">Those who asked better, won.</strong>
 						</p>
 						<div className="grid gap-4 sm:grid-cols-3">
 							{heroStats.map((stat) => (
@@ -73,15 +85,14 @@ export default function PromptatonEventPage() {
 							))}
 						</div>
 						<div className="flex flex-col sm:flex-row gap-4 justify-center">
-							<Button asChild size="lg" className="gap-2 text-base sm:text-lg py-6 sm:py-7 font-semibold shadow-lg hover:shadow-xl transition-all">
-								<Link href="/events/promptathon-register">
-									<Zap className="h-5 w-5" />
-									Register Now
+							<Button asChild variant="outline" size="lg" className="py-6 sm:py-7">
+								<Link href={WHATSAPP_GROUP_LINK} target="_blank" rel="noreferrer">
+									Join WhatsApp Community
 								</Link>
 							</Button>
 							<Button asChild variant="outline" size="lg" className="py-6 sm:py-7">
-								<Link href={WHATSAPP_GROUP_LINK} target="_blank" rel="noreferrer">
-									Join WhatsApp Group
+								<Link href="/events">
+									View All Events
 								</Link>
 							</Button>
 						</div>
@@ -101,15 +112,15 @@ const PromptatonDetailsSection = () => (
 				Promptathon in Yuva Kaushal | 2025
 			</p>
 			<h2 className="text-4xl font-poppins font-bold mb-4">
-				Welcome to Promptathon 2025! ⚡
+				Promptathon 2025 - A Grand Success! ⚡
 			</h2>
 			<p className="text-muted-foreground max-w-3xl mx-auto mb-4">
-				Presented by Lamrin Tech Skills University Punjab and DevNest. Promptathon is a unique AI prompt engineering competition where your words become your weapon. This is not about speed or code – it's about pure thinking power and your ability to communicate with AI effectively.
+				Presented by Lamrin Tech Skills University Punjab and DevNest. Promptathon was a unique AI prompt engineering competition where words became the ultimate weapon. This was not about speed or code – it was about pure thinking power and the ability to communicate with AI effectively.
 			</p>
 			<div className="max-w-2xl mx-auto mt-6 p-6 bg-primary/10 rounded-2xl border border-primary/30">
 				<h3 className="text-xl font-bold mb-3 text-primary">PROMPT SMARTER. THINK DEEPER. DOMINATE LOUDER.</h3>
 				<p className="text-muted-foreground italic">
-					"Craft prompts that push AI past the obvious. If you can <strong>ASK BETTER</strong>, you <strong>WIN</strong>."
+					"Students crafted prompts that pushed AI past the obvious. Those who <strong>ASKED BETTER</strong>, <strong>WON</strong>."
 				</p>
 			</div>
 		</div>
@@ -130,7 +141,7 @@ const PromptatonDetailsSection = () => (
 			<div className="glass-effect rounded-3xl border border-border/40 p-6">
 				<div className="flex items-center gap-2 mb-4">
 					<CheckCircle2 className="w-5 h-5 text-primary" />
-					<h3 className="text-xl font-semibold">What's in store?</h3>
+					<h3 className="text-xl font-semibold">What Happened?</h3>
 				</div>
 				<ul className="space-y-3 text-muted-foreground">
 					{whatsInStoreList.map((item) => (
@@ -145,7 +156,7 @@ const PromptatonDetailsSection = () => (
 			<div className="glass-effect rounded-3xl border border-border/40 p-6">
 				<div className="flex items-center gap-2 mb-4">
 					<ShieldCheck className="w-5 h-5 text-secondary" />
-					<h3 className="text-xl font-semibold">Why join?</h3>
+					<h3 className="text-xl font-semibold">Event Highlights</h3>
 				</div>
 				<ul className="space-y-3 text-muted-foreground">
 					{whyJoinList.map((item) => (
@@ -156,15 +167,6 @@ const PromptatonDetailsSection = () => (
 					))}
 				</ul>
 			</div>
-		</div>
-
-		<div className="flex justify-center">
-			<Button asChild size="lg" className="gap-2 text-base sm:text-lg px-8 py-6 sm:py-7 font-semibold shadow-lg hover:shadow-xl transition-all">
-				<Link href="/events/promptathon-register">
-					<Zap className="h-5 w-5" />
-					Register Now
-				</Link>
-			</Button>
 		</div>
 
 		<div className="glass-effect rounded-3xl border border-border/40 p-6">
@@ -183,15 +185,14 @@ const PromptatonDetailsSection = () => (
 				</div>
 			</div>
 			<div className="flex flex-wrap gap-3 mb-4">
-				<Button asChild size="lg" className="gap-2 font-semibold">
-					<Link href="/events/promptathon-register">
-						<Zap className="h-4 w-4" />
-						Register Now
+				<Button asChild variant="outline">
+					<Link href={WHATSAPP_GROUP_LINK} target="_blank" rel="noreferrer">
+						Join WhatsApp Community
 					</Link>
 				</Button>
 				<Button asChild variant="outline">
-					<Link href={WHATSAPP_GROUP_LINK} target="_blank" rel="noreferrer">
-						Join WhatsApp Group
+					<Link href="/events">
+						View All Events
 					</Link>
 				</Button>
 				<Button asChild variant="ghost">

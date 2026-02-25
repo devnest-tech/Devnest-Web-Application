@@ -37,7 +37,7 @@ export function InterviewsOpen() {
         <div className="text-center mb-8 sm:mb-12">
           <div className="flex justify-center mb-4 sm:mb-6">
             <Image
-              src="/logo.png"
+              src="/logo.svg"
               alt="DevNest"
               width={64}
               height={64}
@@ -71,9 +71,9 @@ export function InterviewsOpen() {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
           <Button asChild className="w-full sm:w-auto bg-primary hover:bg-primary/90 gap-2 text-base sm:text-lg px-6 sm:px-8 py-6 sm:py-auto active:scale-95 transition-transform">
-            <Link href="/events/bytebloom-register">
+            <Link href="/join">
               <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
-              Register for DevNest
+              Join DevNest
             </Link>
           </Button>
           <a

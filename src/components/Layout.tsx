@@ -21,9 +21,11 @@ const FaultyTerminal = dynamic(() => import("@/components/FaultyTerminal"), {
 
 interface LayoutProps {
   children: ReactNode;
+  pauseTerminal?: boolean;
+  customTheme?: 'blue-gold' | 'default';
 }
 
-export function Layout({ children }: LayoutProps) {
+export function Layout({ children, pauseTerminal = false, customTheme = 'default' }: LayoutProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -70,27 +72,29 @@ export function Layout({ children }: LayoutProps) {
     <div>
       <div className="min-h-screen bg-background text-foreground flex flex-col relative">
         {/* Universal FaultyTerminal Background */}
-        <div ref={terminalRef} className="fixed inset-0 pointer-events-none z-0 opacity-10" style={{ contain: 'layout style paint' }}>
-          <FaultyTerminal
-            scale={1.5}
-            gridMul={[2, 1]}
-            digitSize={1.2}
-            timeScale={0.5}
-            scanlineIntensity={0.5}
-            glitchAmount={0.8}
-            flickerAmount={0.8}
-            noiseAmp={0.8}
-            chromaticAberration={0}
-            dither={0}
-            curvature={0.1}
-            tint="#00B871"
-            mouseReact={false}
-            mouseStrength={0}
-            pageLoadAnimation={false}
-            brightness={0.6}
-            pause={!isTerminalVisible}
-          />
-        </div>
+        {!pauseTerminal && (
+          <div ref={terminalRef} className="fixed inset-0 pointer-events-none z-0 opacity-25" style={{ contain: 'layout style paint' }}>
+            <FaultyTerminal
+              scale={1.5}
+              gridMul={[2, 1]}
+              digitSize={1.2}
+              timeScale={0.5}
+              pause={false}
+              scanlineIntensity={0.5}
+              glitchAmount={1}
+              flickerAmount={1}
+              noiseAmp={1}
+              chromaticAberration={0}
+              dither={0}
+              curvature={0.1}
+              tint="#00B871"
+              mouseReact={true}
+              mouseStrength={0.5}
+              pageLoadAnimation={true}
+              brightness={0.6}
+            />
+          </div>
+        )}
 
         {/* GPU-Accelerated Global Background Accents */}
         <div className="fixed inset-0 pointer-events-none z-[1]" style={{ contain: 'layout style paint', willChange: 'transform' }}>
@@ -101,26 +105,22 @@ export function Layout({ children }: LayoutProps) {
         {/* Navigation */}
         <nav className="sticky top-0 z-50 backdrop-blur-xl bg-background/90 border-b border-border shadow-lg shadow-primary/5" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
           {/* Gradient Accent Line */}
-          <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-60" style={{ transform: 'translateZ(0)' }} />
+          <div className={`absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent ${customTheme === 'blue-gold' ? 'via-blue-400' : 'via-primary'} to-transparent opacity-60`} style={{ transform: 'translateZ(0)' }} />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div className="flex items-center justify-between h-16 sm:h-20">
               {/* Logo */}
               <Link href="/" className="flex items-center gap-3 group relative">
-                <div className="relative" style={{ willChange: 'transform' }}>
-                  <div className="absolute inset-0 bg-primary/20 rounded-full group-hover:bg-primary/40 transition-all duration-300" style={{ filter: 'blur(12px)', transform: 'translateZ(0)' }} />
-                  <Image
-                    src="/logo.png"
-                    alt="DevNest Logo"
-                    width={44}
-                    height={44}
-                    priority
-                    className="w-11 h-11 object-contain group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 relative z-10"
-                    style={{ transform: 'translateZ(0)', willChange: 'transform' }}
-                  />
-                </div>
+                <Image
+                  src="/logo.svg"
+                  alt="DevNest Logo"
+                  width={44}
+                  height={44}
+                  priority
+                  className="w-11 h-11 object-contain group-hover:scale-110 group-hover:rotate-12 transition-all duration-500"
+                />
                 <div className="hidden sm:flex flex-col">
-                  <span className="font-poppins font-bold text-xl bg-gradient-to-r from-primary via-primary to-primary/70 bg-clip-text text-transparent group-hover:tracking-wider transition-all duration-300">
+                  <span className={`font-poppins font-bold text-xl bg-gradient-to-r ${customTheme === 'blue-gold' ? 'from-blue-400 via-blue-300 to-amber-400' : 'from-primary via-primary to-primary/70'} bg-clip-text text-transparent group-hover:tracking-wider transition-all duration-300`}>
                     DevNest
                   </span>
                   <span className="text-[10px] text-muted-foreground font-medium -mt-1">Tech Community</span>
@@ -133,13 +133,13 @@ export function Layout({ children }: LayoutProps) {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 hover:bg-primary/10 hover:text-primary relative group overflow-hidden"
+                    className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${customTheme === 'blue-gold' ? 'hover:bg-blue-400/10 hover:text-blue-400' : 'hover:bg-primary/10 hover:text-primary'} relative group overflow-hidden`}
                   >
                     <span className="relative z-10">{item.label}</span>
                     {/* Animated underline */}
-                    <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-primary/50 group-hover:w-3/4 group-hover:left-[12.5%] transition-all duration-300" />
+                    <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r ${customTheme === 'blue-gold' ? 'from-blue-400 to-amber-400' : 'from-primary to-primary/50'} group-hover:w-3/4 group-hover:left-[12.5%] transition-all duration-300`} />
                     {/* Hover glow */}
-                    <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <span className={`absolute inset-0 rounded-xl bg-gradient-to-r ${customTheme === 'blue-gold' ? 'from-blue-400/0 via-blue-400/10 to-blue-400/0' : 'from-primary/0 via-primary/10 to-primary/0'} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
                   </Link>
                 ))}
               </div>
@@ -232,7 +232,7 @@ export function Layout({ children }: LayoutProps) {
               <div className="text-center sm:text-left">
                 <div className="flex items-center gap-2 mb-4 justify-center sm:justify-start">
                   <Image
-                    src="/logo.png"
+                    src="/logo.svg"
                     alt="DevNest Logo"
                     width={40}
                     height={40}

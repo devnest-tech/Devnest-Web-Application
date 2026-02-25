@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { Layout } from "@/components/Layout";
 import { TeamCard } from "@/components/TeamCard";
 import { Button } from "@/components/ui/button";
@@ -24,6 +25,7 @@ export default function TeamPage() {
 
   return (
     <Layout>
+      <Head><title>DevNest | Team</title></Head>
       <div className="relative min-h-screen py-20 overflow-hidden">
         {/* Animated Hexagon Pattern Background */}
         <div className="absolute inset-0 opacity-[0.04]">
@@ -44,7 +46,7 @@ export default function TeamPage() {
           <div className="text-center mb-20">
             <div className="mb-6 inline-flex items-center gap-3 px-4 py-2 rounded-full bg-primary/10 border border-primary/30">
               <Image
-                src="/logo.png"
+                src="/logo.svg"
                 alt="DevNest"
                 width={24}
                 height={24}

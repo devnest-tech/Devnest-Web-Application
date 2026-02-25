@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Mail, MapPin, Phone, MessageCircle, Instagram, Linkedin, Github } from "lucide-react";
@@ -73,6 +74,7 @@ export default function ContactPage() {
 
   return (
     <Layout>
+      <Head><title>DevNest | Contact</title></Head>
       <div className="min-h-screen py-20 bg-gradient-to-b from-background to-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
@@ -219,7 +221,7 @@ export default function ContactPage() {
             {/* Info Sidebar */}
             <div className="lg:col-span-1">
               <div className="glass-effect rounded-xl p-8 sticky top-24 space-y-8">
-              <div>
+                <div>
                   <h3 className="font-poppins font-bold mb-4">
                     📍 Location
                   </h3>

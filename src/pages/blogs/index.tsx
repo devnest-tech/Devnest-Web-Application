@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -36,13 +37,14 @@ export default function BlogsPage() {
 
   return (
     <Layout>
+      <Head><title>DevNest | Blog</title></Head>
       <div className="min-h-screen py-20 bg-gradient-to-b from-background to-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-16">
             <div className="mb-6 inline-flex items-center gap-3 px-4 py-2 rounded-full bg-primary/10 border border-primary/30">
               <Image
-                src="/logo.png"
+                src="/logo.svg"
                 alt="DevNest"
                 width={20}
                 height={20}

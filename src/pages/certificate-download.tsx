@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { Layout } from "@/components/Layout";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -45,6 +46,7 @@ export default function CertificateDownloadPage() {
 
 	return (
 		<Layout>
+			<Head><title>DevNest | Certificate Download</title></Head>
 			<div className="min-h-screen bg-gradient-to-b from-background to-muted/40 py-16">
 				<div className="mx-auto max-w-2xl px-4 sm:px-6">
 					<div className="text-center mb-8">
