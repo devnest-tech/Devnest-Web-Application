@@ -55,7 +55,7 @@ export default function PromptatonEventPage() {
 							<Sparkles className="h-6 w-6" />
 						</h2>
 						<p className="text-lg text-muted-foreground">
-							Promptathon 2025 was a grand success with 100+ participants showcasing exceptional AI prompt engineering skills! 🎉
+							Promptathon 2025 was a grand success with 68 participants showcasing exceptional AI prompt engineering skills! 🎉
 						</p>
 					</div>
 

@@ -37,7 +37,7 @@ const events = [
 		teamSize: "Individual or 2 members",
 		icon: "⚡",
 		status: "completed",
-		attendees: "100+",
+		attendees: "68",
 		schedule: [
 			{ time: "10:30 - 11:00", activity: "Registration & Setup", description: "Participant check-in and system allocation at IBM Lab" },
 			{ time: "11:00 - 11:15", activity: "Opening & Briefing", description: "Event rules, judging criteria, and prompt engineering basics" },

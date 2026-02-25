@@ -28,7 +28,7 @@ const pastEvents = [
 		id: 1,
 		title: "Promptathon in Yuva Kaushal",
 		date: "February 25, 2025",
-		attendees: "100+",
+		attendees: "68",
 		highlight: "A grand success! Students showcased exceptional AI prompt engineering skills, pushing the boundaries of AI communication and critical thinking.",
 		icon: "⚡",
 		link: "/events/promptathon-2026",

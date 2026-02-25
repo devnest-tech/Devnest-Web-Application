@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { GeistPixelSquare } from "geist/font/pixel";
-import { Trophy } from "lucide-react";
+
 import { motion, useScroll, useTransform } from "framer-motion";
 
 import Head from "next/head";
@@ -113,7 +113,12 @@ export default function Promptathon2026Page() {
 			<Layout pauseTerminal customTheme="blue-gold">
 				<Head>
 					<title>DevNest | Promptathon 2025</title>
-					<style>{`#promptathon-page h1,#promptathon-page h2,#promptathon-page h3,#promptathon-page h4,#promptathon-page h5,#promptathon-page h6{font-family:inherit}`}</style>
+					<style>{`
+						#promptathon-page h1,#promptathon-page h2,#promptathon-page h3,
+						#promptathon-page h4,#promptathon-page h5,#promptathon-page h6{font-family:inherit}
+						#dome-tint-wrapper{filter:sepia(1) hue-rotate(190deg) saturate(4) brightness(0.85)}
+						#dome-tint-wrapper:has(.sphere-root[data-enlarging="true"]){filter:none}
+					`}</style>
 				</Head>
 				{/* FIXED BACKGROUND LAYER */}
 				<div className="fixed inset-0 z-0 overflow-hidden bg-black">
@@ -259,9 +264,7 @@ export default function Promptathon2026Page() {
 										rotate: useTransform(s4IconOpacity, [0, 1], [-180, 0])
 									}}
 								>
-									<Trophy
-										className="w-24 h-24 sm:w-32 sm:h-32 text-amber-400 mx-auto"
-									/>
+									<span className="block text-center text-[8rem] sm:text-[10rem] leading-none font-black text-amber-400 tracking-tighter">[WIN]</span>
 								</motion.div>
 
 								<motion.h2
@@ -324,15 +327,17 @@ export default function Promptathon2026Page() {
 							className="sticky top-0 h-screen"
 							style={{ opacity: s5Opacity }}
 						>
-							<DomeGallery
-								images={PROMPTATHON_IMAGES}
-								fit={0.8}
-								minRadius={600}
-								maxVerticalRotationDeg={0}
-								segments={34}
-								dragDampening={2}
-								grayscale
-							/>
+							<div id="dome-tint-wrapper" className="w-full h-full">
+								<DomeGallery
+									images={PROMPTATHON_IMAGES}
+									fit={0.8}
+									minRadius={600}
+									maxVerticalRotationDeg={0}
+									segments={34}
+									dragDampening={2}
+									grayscale
+								/>
+							</div>
 						</motion.div>
 					</section>
 
