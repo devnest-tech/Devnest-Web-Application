@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { MotionValue, useTransform } from 'framer-motion';
 
 interface ScrollTypingTextProps {
@@ -19,33 +19,31 @@ export default function ScrollTypingText({
 	className = ''
 }: ScrollTypingTextProps) {
 	const [displayedText, setDisplayedText] = useState('');
-	const [currentLength, setCurrentLength] = useState(0);
+	const lengthRef = useRef(0);
 
 	useEffect(() => {
 		const unsubscribe = progress.on('change', (value) => {
-			// Map progress value to text length
 			const start = scrollRange[0];
 			const end = scrollRange[1];
-
-			// Normalize the progress within the specified range
 			const normalizedProgress = Math.max(0, Math.min(1, (value - start) / (end - start)));
-
-			// Calculate how many characters to show
 			const charsToShow = Math.floor(normalizedProgress * text.length);
 
-			if (charsToShow !== currentLength) {
-				setCurrentLength(charsToShow);
+			if (charsToShow !== lengthRef.current) {
+				lengthRef.current = charsToShow;
 				setDisplayedText(text.substring(0, charsToShow));
 			}
 		});
 
 		return () => unsubscribe();
-	}, [progress, text, scrollRange, currentLength]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [progress, text, scrollRange[0], scrollRange[1]]);
+
+	const done = lengthRef.current >= text.length;
 
 	return (
 		<span className={className}>
 			{displayedText}
-			{showCursor && currentLength < text.length && (
+			{showCursor && !done && (
 				<span className="animate-pulse">|</span>
 			)}
 		</span>
