@@ -8,6 +8,7 @@ import { Layout } from "@/components/Layout";
 import PixelBlast from "@/components/PixelBlast";
 import ScrollTypingText from "@/components/ScrollTypingText";
 import DomeGallery from "@/components/DomeGallery";
+import ScrollDown from "@/components/ScrollDown";
 
 const PROMPTATHON_IMAGES = [
 	"/events/promptathon/20260225_100656.jpg",
@@ -43,8 +44,29 @@ const PROMPTATHON_IMAGES = [
 	"/events/promptathon/20260225_130334.jpg",
 	"/events/promptathon/20260225_130346.jpg",
 	"/events/promptathon/20260225_160733.jpg",
+	"/events/promptathon/20260225_160733(1).jpg",
 	"/events/promptathon/20260225_160740.jpg",
+	"/events/promptathon/20260225_160740(1).jpg",
 	"/events/promptathon/20260225_160812.jpg",
+	"/events/promptathon/20260225_160812(1).jpg",
+	"/events/promptathon/20260225_160814.jpg",
+	"/events/promptathon/20260225_160814(1).jpg",
+	"/events/promptathon/20260225_160901.jpg",
+	"/events/promptathon/20260225_160901(1).jpg",
+	"/events/promptathon/20260225_160905.jpg",
+	"/events/promptathon/20260225_160905(1).jpg",
+	"/events/promptathon/20260225_160907.jpg",
+	"/events/promptathon/20260225_160907(1).jpg",
+	"/events/promptathon/20260225_161018.jpg",
+	"/events/promptathon/20260225_161021.jpg",
+	"/events/promptathon/20260225_161058.jpg",
+	"/events/promptathon/20260225_161100.jpg",
+	"/events/promptathon/20260225_161101.jpg",
+	"/events/promptathon/20260225_161353.jpg",
+	"/events/promptathon/20260225_161357.jpg",
+	"/events/promptathon/20260225_161519.jpg",
+	"/events/promptathon/20260225_161521.jpg",
+	"/events/promptathon/20260225_161554.jpg",
 ];
 
 // Tint wrapper: applies blue filter to dome, removes it when image is previewed
@@ -382,6 +404,9 @@ export default function Promptathon2026Page() {
 					</section>
 
 				</div>
+
+				{/* Sticky scroll down indicator */}
+				<ScrollDown scrollProgress={scrollYProgress} fadeOutStart={0} fadeOutEnd={0.05} />
 			</Layout>
 		</div>
 	);

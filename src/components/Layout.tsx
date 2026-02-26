@@ -27,7 +27,7 @@ interface LayoutProps {
 
 export function Layout({ children, pauseTerminal = false, customTheme = 'default' }: LayoutProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [isTerminalVisible, setIsTerminalVisible] = useState(true);
   const terminalRef = useRef<HTMLDivElement>(null);
@@ -151,7 +151,7 @@ export function Layout({ children, pauseTerminal = false, customTheme = 'default
                   className="p-2 rounded-lg hover:bg-accent/10 transition-colors"
                   aria-label="Toggle dark mode"
                 >
-                  {mounted && theme === "dark" ? (
+                  {mounted && resolvedTheme === "dark" ? (
                     <Sun className="w-5 h-5 text-yellow-400" />
                   ) : (
                     <Moon className="w-5 h-5" />
