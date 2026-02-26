@@ -55,52 +55,49 @@ export default function PromptatonEventPage() {
 							<Sparkles className="h-6 w-6" />
 						</h2>
 						<p className="text-lg text-muted-foreground">
-							Promptathon 2025 was a grand success with 68 participants showcasing exceptional AI prompt engineering skills! 🎉
-						</p>
-					</div>
-
-					<section className="text-center mb-16 space-y-6">
-						<div>
-							<span className="inline-block rounded-full border border-primary/40 bg-primary/15 px-5 py-2 text-sm font-semibold text-primary shadow-sm">
-								Promptathon in Yuva Kaushal | 2025
-							</span>
-						</div>
-						<h1 className="text-4xl sm:text-5xl font-poppins font-bold">
-							Where WORDS CONTROLLED INTELLIGENCE
-						</h1>
-						<p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-							Not Speed. Not Code. Just Pure Thinking Power. Students crafted prompts that pushed AI past the obvious.
-							<strong className="text-primary block mt-2">Those who asked better, won.</strong>
-						</p>
-						<div className="grid gap-4 sm:grid-cols-3">
-							{heroStats.map((stat) => (
-								<div
-									key={stat.label}
-									className="glass-effect rounded-2xl border border-border/50 px-4 py-5 flex flex-col items-center gap-2"
-								>
-									<stat.icon className="h-5 w-5 text-primary" />
-									<p className="text-sm text-muted-foreground">{stat.label}</p>
-									<p className="font-semibold">{stat.value}</p>
+							Promptathon 2025 was a grand success with 68 participants showcasing exceptional AI prompt engineering skills! <span className="emoji-white">🎉</span>
+							<section className="text-center mb-16 space-y-6">
+								<div>
+									<span className="inline-block rounded-full border border-primary/40 bg-primary/15 px-5 py-2 text-sm font-semibold text-primary shadow-sm">
+										Promptathon in Yuva Kaushal | 2025
+									</span>
 								</div>
-							))}
-						</div>
-						<div className="flex flex-col sm:flex-row gap-4 justify-center">
-							<Button asChild variant="outline" size="lg" className="py-6 sm:py-7">
-								<Link href={WHATSAPP_GROUP_LINK} target="_blank" rel="noreferrer">
-									Join WhatsApp Community
-								</Link>
-							</Button>
-							<Button asChild variant="outline" size="lg" className="py-6 sm:py-7">
-								<Link href="/events">
-									View All Events
-								</Link>
-							</Button>
-						</div>
-					</section>
+								<h1 className="text-4xl sm:text-5xl font-poppins font-bold">
+									Where WORDS CONTROLLED INTELLIGENCE
+								</h1>
+								<p className="text-muted-foreground max-w-3xl mx-auto text-lg">
+									Not Speed. Not Code. Just Pure Thinking Power. Students crafted prompts that pushed AI past the obvious.
+									<strong className="text-primary block mt-2">Those who asked better, won.</strong>
+								</p>
+								<div className="grid gap-4 sm:grid-cols-3">
+									{heroStats.map((stat) => (
+										<div
+											key={stat.label}
+											className="glass-effect rounded-2xl border border-border/50 px-4 py-5 flex flex-col items-center gap-2"
+										>
+											<stat.icon className="h-5 w-5 text-primary" />
+											<p className="text-sm text-muted-foreground">{stat.label}</p>
+											<p className="font-semibold">{stat.value}</p>
+										</div>
+									))}
+								</div>
+								<div className="flex flex-col sm:flex-row gap-4 justify-center">
+									<Button asChild variant="outline" size="lg" className="py-6 sm:py-7">
+										<Link href={WHATSAPP_GROUP_LINK} target="_blank" rel="noreferrer">
+											Join WhatsApp Community
+										</Link>
+									</Button>
+									<Button asChild variant="outline" size="lg" className="py-6 sm:py-7">
+										<Link href="/events">
+											View All Events
+										</Link>
+									</Button>
+								</div>
+							</section>
 
-					<PromptatonDetailsSection />
+							<PromptatonDetailsSection />
+					</div>
 				</div>
-			</div>
 		</Layout>
 	);
 }

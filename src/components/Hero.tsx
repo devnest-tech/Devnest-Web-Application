@@ -98,7 +98,7 @@ export function Hero() {
         {/* Tagline */}
         <div className="mb-6 inline-block">
           <span className="inline-block px-4 py-2 rounded-full bg-primary/15 border border-primary/40 text-primary text-sm font-semibold shadow-sm">
-            🚀 Google Campus Ambassador Initiative
+            <span className="emoji-white">🚀</span> Google Campus Ambassador Initiative
           </span>
         </div>
 
@@ -170,7 +170,7 @@ export function Hero() {
             variant="outline"
             className="w-full sm:w-auto border-primary/50 text-foreground hover:bg-primary/10 hover:border-primary gap-2 shadow-md hover:shadow-lg hover:shadow-primary/30 transition-all"
           >
-            <Link href="/projects">💡 Explore Projects</Link>
+            <Link href="/projects"><span className="emoji-white">💡</span> Explore Projects</Link>
           </Button>
         </div>
 

@@ -99,7 +99,7 @@ export default function JoinPage() {
               <div className="text-center mb-16">
                 <div className="mb-6 inline-block">
                   <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-medium">
-                    🎯 Join the Innovation Nest
+                    <span className="emoji-white">🎯</span> Join the Innovation Nest
                   </span>
                 </div>
                 <h1 className="text-5xl sm:text-6xl font-poppins font-bold mb-4 glow-text">
@@ -351,7 +351,7 @@ export default function JoinPage() {
                 <CheckCircle className="w-20 h-20 text-primary" />
               </div>
               <h2 className="text-4xl font-poppins font-bold mb-3">
-                Welcome to DevNest! 🎉
+                Welcome to DevNest! <span className="emoji-white">🎉</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-2">
                 Your registration has been submitted successfully!

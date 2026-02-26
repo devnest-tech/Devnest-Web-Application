@@ -7,10 +7,10 @@ import ShinyText from "@/components/ShinyText";
 export function InterviewsOpen() {
   const isOpen = true; // Toggle this to change status
   const applicantPositions = [
-    "📱 Mobile App Developer",
-    "🎨 UI/UX Designer",
-    "📊 Data Analyst",
-    "🔐 Security Engineer",
+    <><span className="emoji-white">📱</span> Mobile App Developer</>,
+    <><span className="emoji-white">🎨</span> UI/UX Designer</>,
+    <><span className="emoji-white">📊</span> Data Analyst</>,
+    <><span className="emoji-white">🔐</span> Security Engineer</>,
   ];
 
   return (
@@ -45,7 +45,7 @@ export function InterviewsOpen() {
             />
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-poppins font-bold mb-3 sm:mb-4 px-2">
-            🚀 <ShinyText text="Join Our Core Team!" className="glow-text" speed={2} />
+            <span className="emoji-white">🚀</span> <ShinyText text="Join Our Core Team!" className="glow-text" speed={2} />
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-2 px-2">
             We're seeking passionate innovators to become part of DevNest's leadership. As a core member, you'll lead initiatives, mentor students, and drive meaningful impact across AI, Web Development, Cloud Computing, Cybersecurity, and Data Science.
@@ -95,7 +95,7 @@ export function InterviewsOpen() {
         {/* Info Text */}
         <div className="text-center mt-6 sm:mt-8 text-xs sm:text-sm text-muted-foreground px-2">
           <p className="leading-relaxed">
-            ✨ Core Members Get: Leadership Training • Industry Networking • DevNest Certificate • Public Recognition
+            <span className="emoji-white">✨</span> Core Members Get: Leadership Training • Industry Networking • DevNest Certificate • Public Recognition
           </p>
         </div>
       </div>

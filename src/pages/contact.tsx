@@ -81,7 +81,7 @@ export default function ContactPage() {
           <div className="text-center mb-16">
             <div className="mb-6 inline-block">
               <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-medium">
-                📞 Get In Touch
+                <span className="emoji-white">📞</span> Get In Touch
               </span>
             </div>
             <h1 className="text-5xl sm:text-6xl font-poppins font-bold mb-4 glow-text">
@@ -223,7 +223,7 @@ export default function ContactPage() {
               <div className="glass-effect rounded-xl p-8 sticky top-24 space-y-8">
                 <div>
                   <h3 className="font-poppins font-bold mb-4">
-                    📍 Location
+                    <span className="emoji-white">📍</span> Location
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     Lamrin Tech Skills University<br />
@@ -233,7 +233,7 @@ export default function ContactPage() {
 
                 <div>
                   <h3 className="font-poppins font-bold mb-4">
-                    📧 Email
+                    <span className="emoji-white">📧</span> Email
                   </h3>
                   <p className="text-sm text-muted-foreground">
                     <a href="mailto:devnest.techclub@gmail.com" className="text-primary hover:underline">
@@ -276,7 +276,7 @@ export default function ContactPage() {
 
                 <div className="bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg p-4 border border-primary/30">
                   <p className="text-sm font-semibold text-foreground mb-2">
-                    💡 Pro Tip
+                    <span className="emoji-white">💡</span> Pro Tip
                   </p>
                   <p className="text-xs text-muted-foreground">
                     For quick questions, join our Discord community and connect with the team directly!
@@ -293,25 +293,25 @@ export default function ContactPage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="glass-effect rounded-lg p-6">
-                <h4 className="font-poppins font-bold mb-2">🎯 Event Registration</h4>
+                <h4 className="font-poppins font-bold mb-2"><span className="emoji-white">🎯</span> Event Registration</h4>
                 <p className="text-sm text-muted-foreground">
                   Head to our Events page to see upcoming events and register.
                 </p>
               </div>
               <div className="glass-effect rounded-lg p-6">
-                <h4 className="font-poppins font-bold mb-2">👥 Join the Community</h4>
+                <h4 className="font-poppins font-bold mb-2"><span className="emoji-white">👥</span> Join the Community</h4>
                 <p className="text-sm text-muted-foreground">
                   Fill out the membership form on the Join page to become a member.
                 </p>
               </div>
               <div className="glass-effect rounded-lg p-6">
-                <h4 className="font-poppins font-bold mb-2">💼 Collaboration</h4>
+                <h4 className="font-poppins font-bold mb-2"><span className="emoji-white">💼</span> Collaboration</h4>
                 <p className="text-sm text-muted-foreground">
                   Interested in partnering? Email us your proposal at devnest.techclub@gmail.com
                 </p>
               </div>
               <div className="glass-effect rounded-lg p-6">
-                <h4 className="font-poppins font-bold mb-2">💬 Discord Server</h4>
+                <h4 className="font-poppins font-bold mb-2"><span className="emoji-white">💬</span> Discord Server</h4>
                 <p className="text-sm text-muted-foreground">
                   Join our Discord to connect with 500+ members and stay updated.
                 </p>

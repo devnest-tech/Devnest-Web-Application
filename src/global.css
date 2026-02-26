@@ -1,6 +1,14 @@
 /** @import must precede all other statements */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap");
 
+@font-face {
+  font-family: 'SerenityEmoji';
+  src: url('/fonts/serenity-emoji.woff2') format('woff2'),
+    url('/fonts/serenity-emoji.ttf') format('truetype');
+  font-display: swap;
+  unicode-range: U+1F600-1F64F, U+1F300-1F5FF, U+1F680-1F6FF;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -120,6 +128,16 @@
     @apply bg-background text-foreground font-manrope;
   }
 
+  /* Global emoji styling - white pixel font */
+  body {
+    font-family: 'Manrope', 'SerenityEmoji', sans-serif;
+  }
+
+  /* Force white color for emoji unicode ranges */
+  body :is(h1, h2, h3, h4, h5, h6, p, span, div, a, button, li, td, th, label) {
+    font-family: inherit;
+  }
+
   h1,
   h2,
   h3,
@@ -127,6 +145,11 @@
   h5,
   h6 {
     @apply font-poppins;
+    font-family: 'Poppins', 'SerenityEmoji', sans-serif;
+  }
+
+  :where(p, span, li, a, button, label, td, th, div) {
+    font-family: 'Manrope', 'SerenityEmoji', sans-serif;
   }
 
   :where(p, span, li, a, button, label, td, th) {
@@ -142,6 +165,13 @@
 }
 
 @layer components {
+
+  /* Emoji styling - monochrome white pixel emojis */
+  .emoji-white {
+    font-family: 'SerenityEmoji', sans-serif;
+    filter: grayscale(100%);
+  }
+
   .glow-text {
     background: linear-gradient(135deg, #00b871 0%, #10d98c 100%);
     -webkit-background-clip: text;

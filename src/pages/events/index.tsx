@@ -39,7 +39,7 @@ const pastEvents = [
 		date: "February 5, 2026",
 		attendees: "150+",
 		highlight: "Inspiring session with Amit Kumar Jaiswal, IIM Bangalore graduate and founder of aptitude360online",
-		icon: "🎤",
+		icon: <span className="emoji-white">🎤</span>,
 		link: "/events/guest-speaker-feb",
 	},
 ];
@@ -55,7 +55,7 @@ export default function EventsPage() {
 					<header className="text-center mb-16">
 						<div className="mb-6 inline-block">
 							<span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-medium">
-								🎉 DevNest Events Calendar
+								<span className="emoji-white">🎉</span> DevNest Events Calendar
 							</span>
 						</div>
 						<h1 className="text-5xl sm:text-6xl font-poppins font-bold mb-4">
@@ -194,8 +194,8 @@ export default function EventsPage() {
 												<div>
 													<div className="inline-block px-4 py-2 rounded-full bg-primary/20 text-primary text-sm font-bold mb-4">
 														{event.status === "open"
-															? "🎯 Registrations Open"
-															: "🔔 Coming Soon"}
+															? <><span className="emoji-white">🎯</span> Registrations Open</>
+															: <><span className="emoji-white">🔔</span> Coming Soon</>}
 													</div>
 													<p className="text-sm text-muted-foreground">
 														{event.status === "open"

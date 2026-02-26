@@ -52,7 +52,7 @@ export default function TeamPage() {
                 height={24}
                 className="w-6 h-6 object-contain"
               />
-              <span className="text-primary text-sm font-medium">👥 Our Core Team</span>
+              <span className="text-primary text-sm font-medium"><span className="emoji-white">👥</span> Our Core Team</span>
             </div>
             <h1 className="text-5xl sm:text-6xl font-poppins font-bold mb-4 glow-text">
               Meet The Nest

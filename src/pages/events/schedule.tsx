@@ -18,7 +18,7 @@ const events = [
 		speaker: "Mr. Amit Kumar Jaiswal",
 		speakerRole: "Founder – Aptitude360.online",
 		speakerDetails: "IIM Graduate | 15+ years | Mentored 10,000+ students | UPSC, CAT, SSC, Banking Expert",
-		icon: "🎓",
+		icon: <span className="emoji-white">🎓</span>,
 		status: "completed",
 		schedule: [
 			{ time: "10:00 - 10:10", activity: "Inaugural Address", description: "Welcome address and introduction of the speaker" },
@@ -31,7 +31,7 @@ const events = [
 	{
 		id: 2,
 		title: "Promptathon in Yuva Kaushal",
-		subtitle: "AI Prompt Engineering Competition - Grand Success! 🎉",
+		subtitle: <>AI Prompt Engineering Competition - Grand Success! <span className="emoji-white">🎉</span></>,
 		month: "February 25, 2025",
 		duration: "4 Hours",
 		teamSize: "Individual or 2 members",
@@ -52,7 +52,7 @@ const events = [
 		title: "DataForge Datathon & CyberSprint CTF",
 		subtitle: "Dual Track Competition",
 		month: "April 2026",
-		icon: "🛡️",
+		icon: <span className="emoji-white">🛡️</span>,
 		status: "upcoming",
 		schedule: [
 			{ time: "09:00 - 09:30", activity: "Registration", description: "Participant check-in for Datathon and CTF tracks" },
@@ -69,7 +69,7 @@ const events = [
 		title: "IdeaFusion Ideathon",
 		subtitle: "Innovation & Entrepreneurship",
 		month: "May 2026",
-		icon: "💡",
+		icon: <span className="emoji-white">💡</span>,
 		status: "upcoming",
 		schedule: [
 			{ time: "09:30 - 10:00", activity: "Registration", description: "Team check-in and seating" },
@@ -86,7 +86,7 @@ const events = [
 		title: "CyberSprint Hackathon",
 		subtitle: "Cybersecurity Focus",
 		month: "June 2026",
-		icon: "🔐",
+		icon: <span className="emoji-white">🔐</span>,
 		status: "upcoming",
 		schedule: [
 			{ time: "09:00 - 09:30", activity: "Registration & Team Check-in", description: "Team verification, ID confirmation, system allocation" },
@@ -110,7 +110,7 @@ export default function SchedulePage() {
 					<div className="mb-12 sm:mb-16 text-center">
 						<div className="mb-6 inline-block">
 							<span className="inline-block px-4 py-2 rounded-full bg-primary/15 border border-primary/40 text-primary text-sm font-semibold shadow-sm">
-								📅 February - June 2026
+								<span className="emoji-white">📅</span> February - June 2026
 							</span>
 						</div>
 						<h1 className="text-4xl sm:text-5xl md:text-6xl font-poppins font-bold mb-4 glow-text">

@@ -163,7 +163,7 @@ export function Layout({ children, pauseTerminal = false, customTheme = 'default
                   size="sm"
                   className="bg-primary hover:bg-primary/90 text-primary-foreground hidden sm:inline-flex gap-2 shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-105 transition-all duration-200 neon-border"
                 >
-                  <Link href="/join">🚀 Join</Link>
+                  <Link href="/join"><span className="emoji-white">🚀</span> Join</Link>
                 </Button>
 
                 {/* Modern Hamburger Menu Button */}
@@ -209,7 +209,7 @@ export function Layout({ children, pauseTerminal = false, customTheme = 'default
                   <Button className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-primary-foreground gap-2 py-4 shadow-xl shadow-primary/40 neon-border font-semibold text-base rounded-xl relative overflow-hidden group" asChild>
                     <Link href="/join">
                       <span className="relative z-10 flex items-center gap-2 justify-center">
-                        🚀 Join DevNest
+                        <span className="emoji-white">🚀</span> Join DevNest
                       </span>
                       {/* Shine effect */}
                       <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
@@ -319,7 +319,7 @@ export function Layout({ children, pauseTerminal = false, customTheme = 'default
             {/* Social Links */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-border/40">
               <p className="text-xs sm:text-sm text-muted-foreground text-center sm:text-left">
-                © 2026 DevNest | Built with 💚 by Innovators
+                © 2026 DevNest | Built with <span className="emoji-white">💚</span> by Innovators
               </p>
               <div className="flex items-center gap-4 sm:gap-4">
                 <a

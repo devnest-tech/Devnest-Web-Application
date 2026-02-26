@@ -13,7 +13,7 @@ export default function HallOfFamePage() {
             </div>
           </div>
           <h1 className="text-4xl sm:text-5xl font-poppins font-bold mb-4 glow-text">
-            🏆 Hall of Fame
+            <span className="emoji-white">🏆</span> Hall of Fame
           </h1>
           <p className="text-lg text-muted-foreground mb-8">
             Celebrating our top performers and achievements.

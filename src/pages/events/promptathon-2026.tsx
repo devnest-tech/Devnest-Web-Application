@@ -360,7 +360,7 @@ export default function Promptathon2026Page() {
 											key={i}
 											className={`backdrop-blur-xl bg-gradient-to-br ${item.bg} rounded-2xl sm:rounded-3xl p-4 sm:p-6 border ${item.border} text-left`}
 										>
-											<div className="text-2xl sm:text-4xl mb-1 sm:mb-2">{item.medal}</div>
+											<div className="text-2xl sm:text-4xl mb-1 sm:mb-2"><span className="emoji-white">{item.medal}</span></div>
 											<div className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">{item.position}</div>
 											<div className="text-base sm:text-2xl font-black text-white mb-2 sm:mb-4">{item.team}</div>
 											<ul className="space-y-0.5">
