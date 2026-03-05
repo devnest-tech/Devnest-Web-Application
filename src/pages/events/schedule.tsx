@@ -32,7 +32,7 @@ const events = [
 		id: 2,
 		title: "Promptathon in Yuva Kaushal",
 		subtitle: <>AI Prompt Engineering Competition - Grand Success! <span className="emoji-white">🎉</span></>,
-		month: "February 25, 2025",
+		month: "February 25, 2026",
 		duration: "4 Hours",
 		teamSize: "Individual or 2 members",
 		icon: "⚡",

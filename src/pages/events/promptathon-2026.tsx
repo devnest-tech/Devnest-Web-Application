@@ -174,7 +174,7 @@ export default function Promptathon2026Page() {
 		<div id="promptathon-page" className={GeistPixelSquare.className}>
 			<Layout pauseTerminal customTheme="blue-gold">
 				<Head>
-					<title>DevNest | Promptathon 2025</title>
+					<title>DevNest | Promptathon 2026</title>
 					<style>{`
 						#promptathon-page h1,#promptathon-page h2,#promptathon-page h3,
 						#promptathon-page h4,#promptathon-page h5,#promptathon-page h6{font-family:inherit}
@@ -231,7 +231,7 @@ export default function Promptathon2026Page() {
 
 								<motion.div style={{ opacity: s1YearOpacity }}>
 									<span className="block text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] text-amber-400 mt-6 font-black tracking-tight">
-										2025
+										2026
 									</span>
 								</motion.div>
 
@@ -297,7 +297,7 @@ export default function Promptathon2026Page() {
 									style={{ opacity: useTransform(section3Progress, [0.5, 0.7], [0, 1]) }}
 								>
 									<p className="text-2xl sm:text-4xl md:text-5xl font-black text-blue-400">
-										Feb 25, 2025 • IBM Lab
+										Feb 25, 2026 • IBM Lab
 									</p>
 									<p className="text-base sm:text-2xl md:text-3xl text-muted-foreground font-bold">
 										Lamrin Tech Skills University, Punjab

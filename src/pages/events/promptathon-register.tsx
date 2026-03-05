@@ -30,10 +30,10 @@ export default function PromptatonRegistrationPage() {
 								<Sparkles className="w-8 h-8 text-primary" />
 							</h1>
 							<p className="text-xl text-muted-foreground mb-2">
-								Promptathon 2025 - Registration Closed
+								Promptathon 2026 - Registration Closed
 							</p>
 							<p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-								Thank you for your interest! Promptathon 2025 was a grand success with over 100 participants showcasing exceptional AI prompt engineering skills. The event has concluded, and registrations are now closed.
+								Thank you for your interest! Promptathon 2026 was a grand success with over 100 participants showcasing exceptional AI prompt engineering skills. The event has concluded, and registrations are now closed.
 							</p>
 						</div>
 

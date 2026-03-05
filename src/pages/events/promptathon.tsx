@@ -16,7 +16,7 @@ const promptathonFacts = [
 	{ label: "Eligibility", value: "Open to all current college students" },
 	{ label: "Competition Type", value: "AI Prompt Engineering" },
 	{ label: "Venue", value: "IBM Lab" },
-	{ label: "Date", value: "25 February 2025" },
+	{ label: "Date", value: "25 February 2026" },
 	{ label: "Time", value: "11:00 AM to 3:00 PM" },
 ];
 
@@ -55,14 +55,14 @@ export default function PromptatonEventPage() {
 							<Sparkles className="h-6 w-6" />
 						</h2>
 						<p className="text-lg text-muted-foreground">
-							Promptathon 2025 was a grand success with 68 participants showcasing exceptional AI prompt engineering skills! <span className="emoji-white">🎉</span>
+							Promptathon 2026 was a grand success with 68 participants showcasing exceptional AI prompt engineering skills! <span className="emoji-white">🎉</span>
 						</p>
 					</div>
 
 					<section className="text-center mb-16 space-y-6">
 						<div>
 							<span className="inline-block rounded-full border border-primary/40 bg-primary/15 px-5 py-2 text-sm font-semibold text-primary shadow-sm">
-								Promptathon in Yuva Kaushal | 2025
+								Promptathon in Yuva Kaushal | 2026
 							</span>
 						</div>
 						<h1 className="text-4xl sm:text-5xl font-poppins font-bold">
@@ -109,10 +109,10 @@ const PromptatonDetailsSection = () => (
 	<section id="promptathon-details" className="space-y-10">
 		<div className="glass-effect rounded-3xl border border-border/40 bg-background/70 p-8 text-center">
 			<p className="text-sm uppercase tracking-[0.3em] text-primary mb-3">
-				Promptathon in Yuva Kaushal | 2025
+				Promptathon in Yuva Kaushal | 2026
 			</p>
 			<h2 className="text-4xl font-poppins font-bold mb-4">
-				Promptathon 2025 - A Grand Success! ⚡
+				Promptathon 2026 - A Grand Success! ⚡
 			</h2>
 			<p className="text-muted-foreground max-w-3xl mx-auto mb-4">
 				Presented by Lamrin Tech Skills University Punjab and DevNest. Promptathon was a unique AI prompt engineering competition where words became the ultimate weapon. This was not about speed or code – it was about pure thinking power and the ability to communicate with AI effectively.
