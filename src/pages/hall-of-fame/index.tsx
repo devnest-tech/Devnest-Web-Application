@@ -1,8 +1,10 @@
+import Head from "next/head";
 import { Layout } from "@/components/Layout";
 
 export default function HallOfFamePage() {
   return (
     <Layout>
+      <Head><title>DevNest | Hall of Fame</title></Head>
       <div className="min-h-[calc(100vh-200px)] flex items-center justify-center">
         <div className="text-center max-w-2xl px-4">
           <div className="mb-8">
@@ -11,7 +13,7 @@ export default function HallOfFamePage() {
             </div>
           </div>
           <h1 className="text-4xl sm:text-5xl font-poppins font-bold mb-4 glow-text">
-            🏆 Hall of Fame
+            <span className="emoji-white">🏆</span> Hall of Fame
           </h1>
           <p className="text-lg text-muted-foreground mb-8">
             Celebrating our top performers and achievements.

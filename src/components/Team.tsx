@@ -30,7 +30,7 @@ export function Team() {
         <div className="text-center mb-12 sm:mb-16">
           <div className="mb-4 sm:mb-6 inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 rounded-full bg-primary/10 border border-primary/30">
             <Image
-              src="/logo.png"
+              src="/logo.svg"
               alt="DevNest"
               width={24}
               height={24}

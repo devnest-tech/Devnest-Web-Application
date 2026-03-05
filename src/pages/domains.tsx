@@ -1,8 +1,10 @@
+import Head from "next/head";
 import { Layout } from "@/components/Layout";
 
 export default function DomainsPage() {
   return (
     <Layout>
+      <Head><title>DevNest | Domains</title></Head>
       <div className="min-h-[calc(100vh-200px)] flex items-center justify-center">
         <div className="text-center max-w-2xl px-4">
           <div className="mb-8">

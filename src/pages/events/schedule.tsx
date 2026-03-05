@@ -18,7 +18,8 @@ const events = [
 		speaker: "Mr. Amit Kumar Jaiswal",
 		speakerRole: "Founder – Aptitude360.online",
 		speakerDetails: "IIM Graduate | 15+ years | Mentored 10,000+ students | UPSC, CAT, SSC, Banking Expert",
-		icon: "🎓",
+		icon: <span className="emoji-white">🎓</span>,
+		status: "completed",
 		schedule: [
 			{ time: "10:00 - 10:10", activity: "Inaugural Address", description: "Welcome address and introduction of the speaker" },
 			{ time: "10:10 - 11:20", activity: "Expert Guest Lecture", description: "Session on competitive examinations, skill development, career pathways, and industry expectations" },
@@ -30,11 +31,13 @@ const events = [
 	{
 		id: 2,
 		title: "Promptathon in Yuva Kaushal",
-		subtitle: "AI Prompt Engineering Competition",
-		month: "February 25, 2026",
+		subtitle: <>AI Prompt Engineering Competition - Grand Success! <span className="emoji-white">🎉</span></>,
+		month: "February 25, 2025",
 		duration: "4 Hours",
 		teamSize: "Individual or 2 members",
 		icon: "⚡",
+		status: "completed",
+		attendees: "68",
 		schedule: [
 			{ time: "10:30 - 11:00", activity: "Registration & Setup", description: "Participant check-in and system allocation at IBM Lab" },
 			{ time: "11:00 - 11:15", activity: "Opening & Briefing", description: "Event rules, judging criteria, and prompt engineering basics" },
@@ -49,7 +52,8 @@ const events = [
 		title: "DataForge Datathon & CyberSprint CTF",
 		subtitle: "Dual Track Competition",
 		month: "April 2026",
-		icon: "🛡️",
+		icon: <span className="emoji-white">🛡️</span>,
+		status: "upcoming",
 		schedule: [
 			{ time: "09:00 - 09:30", activity: "Registration", description: "Participant check-in for Datathon and CTF tracks" },
 			{ time: "09:30 - 10:00", activity: "Orientation Session", description: "Rules, datasets, tools, and CTF platform briefing" },
@@ -65,7 +69,8 @@ const events = [
 		title: "IdeaFusion Ideathon",
 		subtitle: "Innovation & Entrepreneurship",
 		month: "May 2026",
-		icon: "💡",
+		icon: <span className="emoji-white">💡</span>,
+		status: "upcoming",
 		schedule: [
 			{ time: "09:30 - 10:00", activity: "Registration", description: "Team check-in and seating" },
 			{ time: "10:00 - 10:30", activity: "Idea Briefing", description: "Theme explanation, evaluation parameters" },
@@ -81,7 +86,8 @@ const events = [
 		title: "CyberSprint Hackathon",
 		subtitle: "Cybersecurity Focus",
 		month: "June 2026",
-		icon: "🔐",
+		icon: <span className="emoji-white">🔐</span>,
+		status: "upcoming",
 		schedule: [
 			{ time: "09:00 - 09:30", activity: "Registration & Team Check-in", description: "Team verification, ID confirmation, system allocation" },
 			{ time: "09:30 - 09:45", activity: "Event Briefing", description: "Explanation of rules, problem statements, judging criteria" },
@@ -104,7 +110,7 @@ export default function SchedulePage() {
 					<div className="mb-12 sm:mb-16 text-center">
 						<div className="mb-6 inline-block">
 							<span className="inline-block px-4 py-2 rounded-full bg-primary/15 border border-primary/40 text-primary text-sm font-semibold shadow-sm">
-								📅 February - June 2026
+								<span className="emoji-white">📅</span> February - June 2026
 							</span>
 						</div>
 						<h1 className="text-4xl sm:text-5xl md:text-6xl font-poppins font-bold mb-4 glow-text">
@@ -137,7 +143,12 @@ export default function SchedulePage() {
 												<p className="text-xs sm:text-sm text-muted-foreground">{event.subtitle}</p>
 											</div>
 										</div>
-										<div className="flex items-center gap-3">
+										<div className="flex items-center gap-3 flex-wrap">
+											{event.status === "completed" && (
+												<div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-500/20 text-green-600 dark:text-green-400 text-xs sm:text-sm font-semibold border border-green-500/30 shadow-sm">
+													✓ Completed
+												</div>
+											)}
 											<div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/25 text-primary text-xs sm:text-sm font-semibold border border-primary/20 shadow-sm">
 												<Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
 												{event.month}
@@ -149,6 +160,21 @@ export default function SchedulePage() {
 
 								<AccordionContent className="px-6 sm:px-8 pb-6 sm:pb-8">
 									<div className="pt-4 border-t border-border/40">
+										{/* Completion Badge for completed events */}
+										{event.status === "completed" && (
+											<div className="mb-6 rounded-lg bg-green-500/10 border border-green-500/30 p-4 sm:p-6">
+												<div className="flex items-center gap-2 mb-2">
+													<span className="text-2xl">✓</span>
+													<p className="font-semibold text-base sm:text-lg text-green-600 dark:text-green-400">Event Successfully Completed!</p>
+												</div>
+												{event.attendees && (
+													<p className="text-xs sm:text-sm text-muted-foreground">
+														<strong>{event.attendees}</strong> participants attended this event
+													</p>
+												)}
+											</div>
+										)}
+
 										{/* Event Details */}
 										{event.speaker && (
 											<div className="mb-6 rounded-lg bg-background/50 border border-border/40 p-4 sm:p-6">

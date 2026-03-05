@@ -8,28 +8,28 @@ export function About() {
       title: "DevNest Established",
       description:
         "The official Technical Club of Lamrin Tech Skills University (LTSU) Punjab, inspiring students to explore the limitless world of technology.",
-      icon: "🚀",
+      icon: <span className="emoji-white">🚀</span>,
     },
     {
       year: "Initiative",
       title: "Google Campus Ambassador Led",
       description:
         "Led by Google Campus Ambassadors, DevNest stands as a student-driven initiative dedicated to hands-on learning and innovation.",
-      icon: "🎯",
+      icon: <span className="emoji-white">🎯</span>,
     },
     {
       year: "Domains",
       title: "Multi-Domain Excellence",
       description:
         "Bringing together passionate minds in AI, Cybersecurity, Cloud Computing, Data Science, and Web Development.",
-      icon: "🌐",
+      icon: <span className="emoji-white">🌐</span>,
     },
     {
       year: "Vision",
       title: "Preparing Digital Leaders",
       description:
         "Empowering every student to lead in the digital era through collaboration, creativity, and technical excellence.",
-      icon: "🏆",
+      icon: <span className="emoji-white">🏆</span>,
     },
   ];
 
@@ -114,7 +114,7 @@ export function About() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-20">
           {/* Mission */}
           <div className="glass-effect rounded-2xl p-6 sm:p-8 hover-lift group border border-border hover:border-primary/40 transition-all">
-            <div className="text-4xl sm:text-5xl mb-4 group-hover:scale-110 transition-transform">🎯</div>
+            <div className="text-4xl sm:text-5xl mb-4 group-hover:scale-110 transition-transform"><span className="emoji-white">🎯</span></div>
             <h3 className="text-xl sm:text-2xl font-poppins font-bold mb-3 sm:mb-4 glow-text">Our Mission</h3>
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
               Learn by doing — we provide students with a platform to connect with the outer tech world more vividly and grow through real-world experiences.
@@ -123,7 +123,7 @@ export function About() {
 
           {/* Vision */}
           <div className="glass-effect rounded-2xl p-6 sm:p-8 hover-lift group border border-border hover:border-primary/40 transition-all">
-            <div className="text-4xl sm:text-5xl mb-4 group-hover:scale-110 transition-transform">🚀</div>
+            <div className="text-4xl sm:text-5xl mb-4 group-hover:scale-110 transition-transform"><span className="emoji-white">🚀</span></div>
             <h3 className="text-xl sm:text-2xl font-poppins font-bold mb-3 sm:mb-4 glow-text">Our Vision</h3>
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
               Cultivating a culture of curiosity, collaboration, and technical excellence that prepares every student to lead in the digital era.
@@ -132,7 +132,7 @@ export function About() {
 
           {/* Community */}
           <div className="glass-effect rounded-2xl p-6 sm:p-8 hover-lift group border border-border hover:border-primary/40 transition-all">
-            <div className="text-4xl sm:text-5xl mb-4 group-hover:scale-110 transition-transform">🌟</div>
+            <div className="text-4xl sm:text-5xl mb-4 group-hover:scale-110 transition-transform"><span className="emoji-white">🌟</span></div>
             <h3 className="text-xl sm:text-2xl font-poppins font-bold mb-3 sm:mb-4 glow-text">
               Student-Driven
             </h3>

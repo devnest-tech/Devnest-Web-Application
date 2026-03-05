@@ -67,19 +67,6 @@
     },
     {
       "id": 10,
-      "name": "Yogesh Kumar Mishra",
-      "role": "Club Operation Head",
-      "designation": "DevNest Club Operation Head",
-      "bio": "Driving operational excellence and ensuring smooth club activities. Committed to building a thriving community.",
-      "image": "⚙️",
-      "socials": {
-        "github": "#",
-        "linkedin": "https://www.linkedin.com/in/yogesh-kumar-mishra-97019732a",
-        "instagram": "#"
-      }
-    },
-    {
-      "id": 10,
       "name": "Manish Yadav",
       "role": "Technical Head",
       "designation": "DevNest Technical Head",
@@ -101,19 +88,6 @@
       "socials": {
         "github": "#",
         "linkedin": "https://www.linkedin.com/in/hemanth-chakka/",
-        "instagram": "#"
-      }
-    },
-    {
-      "id": 10,
-      "name": "Parampreet Singh",
-      "role": "Technical Coordinator",
-      "designation": "DevNest Technical Coordinator",
-      "bio": "Fostering collaboration and technical excellence. Dedicated to creating impactful learning experiences.",
-      "image": "🎯",
-      "socials": {
-        "github": "#",
-        "linkedin": "#",
         "instagram": "#"
       }
     },

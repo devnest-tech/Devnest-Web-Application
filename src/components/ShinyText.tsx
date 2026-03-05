@@ -132,7 +132,7 @@ const ShinyText: React.FC<ShinyTextProps> = ({
     transform: 'translateZ(0)',
     willChange: 'background-position',
     backfaceVisibility: 'hidden' as const
-  }), [spread, textColor, shine, theme]);
+  }), [spread, textColor, shine]);
 
   if (!mounted) {
     return <span className={`inline-block ${className}`}>{text}</span>;
