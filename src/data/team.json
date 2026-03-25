@@ -14,7 +14,7 @@
       }
     },
     {
-      "id": 10,
+      "id": 2,
       "name": "Aaditya Kumar",
       "role": "President",
       "designation": "DevNest President",
@@ -27,7 +27,7 @@
       }
     },
     {
-      "id": 10,
+      "id": 3,
       "name": "Tabinda Naseem",
       "role": "Vice President",
       "designation": "DevNest Vice President",
@@ -40,7 +40,7 @@
       }
     },
     {
-      "id": 10,
+      "id": 4,
       "name": "Ayush Kumar Jha",
       "role": "Secretary",
       "designation": "DevNest Secretary",
@@ -53,7 +53,7 @@
       }
     },
     {
-      "id": 10,
+      "id": 5,
       "name": "Nandini Jaishree",
       "role": "CFO",
       "designation": "DevNest Chief Financial Officer",
@@ -66,7 +66,7 @@
       }
     },
     {
-      "id": 10,
+      "id": 6,
       "name": "Manish Yadav",
       "role": "Technical Head",
       "designation": "DevNest Technical Head",
@@ -79,10 +79,10 @@
       }
     },
     {
-      "id": 10,
+      "id": 7,
       "name": "Hemanth Chakka",
-      "role": "Technical Coordinator",
-      "designation": "DevNest Technical Coordinator",
+      "role": "Head Developer",
+      "designation": "DevNest Head Developer",
       "bio": "Coordinating technical workshops and hackathons. Building bridges between ideas and implementation.",
       "image": "💡",
       "socials": {
@@ -92,12 +92,64 @@
       }
     },
     {
-      "id": 10,
+      "id": 8,
       "name": "Sheikh Masood Ahmad",
       "role": "Ideation and Outreach Coordinator",
       "designation": "DevNest Ideation and Outreach Coordinator",
       "bio": "Connecting ideas with opportunities. Building partnerships and expanding DevNest's reach in the tech community.",
       "image": "🌟",
+      "socials": {
+        "github": "#",
+        "linkedin": "#",
+        "instagram": "#"
+      }
+    },
+    {
+      "id": 9,
+      "name": "Shivam",
+      "role": "Developer",
+      "designation": "DevNest Developer",
+      "bio": "Contributing to DevNest development initiatives and supporting technical execution.",
+      "image": "💻",
+      "socials": {
+        "github": "#",
+        "linkedin": "#",
+        "instagram": "#"
+      }
+    },
+    {
+      "id": 10,
+      "name": "Vipul",
+      "role": "Technical Coordinator",
+      "designation": "DevNest Technical Coordinator",
+      "bio": "Coordinating technical activities and helping teams deliver high-quality outcomes.",
+      "image": "🛠️",
+      "socials": {
+        "github": "#",
+        "linkedin": "#",
+        "instagram": "#"
+      }
+    },
+    {
+      "id": 11,
+      "name": "Bhupesh",
+      "role": "Event Coordinator",
+      "designation": "DevNest Event Coordinator",
+      "bio": "Managing event logistics and ensuring smooth execution of DevNest activities.",
+      "image": "📅",
+      "socials": {
+        "github": "#",
+        "linkedin": "#",
+        "instagram": "#"
+      }
+    },
+    {
+      "id": 12,
+      "name": "Anshuman",
+      "role": "Developer",
+      "designation": "DevNest Developer",
+      "bio": "Building and improving DevNest projects with a focus on practical impact.",
+      "image": "🚀",
       "socials": {
         "github": "#",
         "linkedin": "#",
