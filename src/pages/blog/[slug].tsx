@@ -1,29 +1,20 @@
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
-import blogsData from "@/data/blogs.json";
+import {
+  getAllBlogs,
+  getAllBlogSlugs,
+  getBlogBySlug,
+  type BlogMeta,
+  type BlogPost,
+} from "@/lib/blogs";
 import { ArrowLeft, Clock, Share2, User } from "lucide-react";
 import type { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
 
-interface Blog {
-  id: number;
-  title: string;
-  slug: string;
-  author: string;
-  date: string;
-  category: string;
-  thumbnail: string;
-  excerpt: string;
-  content: string;
-  readTime: string;
-}
-
 interface BlogDetailProps {
-  blog: Blog;
-  relatedBlogs: Blog[];
+  blog: BlogPost;
+  relatedBlogs: BlogMeta[];
 }
-
-const blogs: Blog[] = blogsData.blogs;
 
 export default function BlogDetailPage({ blog, relatedBlogs }: BlogDetailProps) {
   return (
@@ -77,18 +68,10 @@ export default function BlogDetailPage({ blog, relatedBlogs }: BlogDetailProps) 
               <p className="text-lg text-muted-foreground my-6 italic">{blog.excerpt}</p>
 
               <div className="prose prose-invert max-w-none mb-12">
-                <p className="text-foreground leading-relaxed mb-6">{blog.content}</p>
-                <p className="text-foreground leading-relaxed mb-6">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                <h2 className="text-2xl font-poppins font-bold mt-8 mb-4">Key Takeaways</h2>
-                <ul className="list-disc list-inside space-y-2 text-foreground">
-                  <li>Point 1: Important insight from the article</li>
-                  <li>Point 2: Another valuable takeaway</li>
-                  <li>Point 3: Key learning to remember</li>
-                </ul>
+                <div
+                  className="text-foreground"
+                  dangerouslySetInnerHTML={{ __html: blog.contentHtml }}
+                />
               </div>
 
               <div className="bg-primary/15 rounded-lg p-6 mb-12 border border-primary/40 shadow-sm">
@@ -128,7 +111,7 @@ export default function BlogDetailPage({ blog, relatedBlogs }: BlogDetailProps) 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {relatedBlogs.map((relatedBlog) => (
                   <Link
-                    key={relatedBlog.id}
+                    key={relatedBlog.slug}
                     href={`/blog/${relatedBlog.slug}`}
                     className="glass-effect rounded-lg overflow-hidden hover-lift transition-all group cursor-pointer h-full"
                   >
@@ -158,23 +141,21 @@ export default function BlogDetailPage({ blog, relatedBlogs }: BlogDetailProps) 
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: blogs.map((blog) => ({
-      params: { slug: blog.slug },
-    })),
+    paths: getAllBlogSlugs(),
     fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps<BlogDetailProps> = async ({ params }) => {
   const slug = params?.slug as string;
-  const blog = blogs.find((b) => b.slug === slug);
+  const blog = await getBlogBySlug(slug);
 
   if (!blog) {
     return { notFound: true };
   }
 
-  const relatedBlogs = blogs.filter(
-    (b) => b.category === blog.category && b.id !== blog.id,
+  const relatedBlogs = getAllBlogs().filter(
+    (b) => b.category === blog.category && b.slug !== blog.slug,
   );
 
   return {

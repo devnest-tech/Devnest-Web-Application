@@ -6,22 +6,14 @@ import { Search, ArrowRight, Clock, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import blogsData from "@/data/blogs.json";
+import type { GetStaticProps } from "next";
+import { getAllBlogs, type BlogMeta } from "@/lib/blogs";
 
-interface Blog {
-  id: number;
-  title: string;
-  slug: string;
-  author: string;
-  date: string;
-  category: string;
-  thumbnail: string;
-  excerpt: string;
-  readTime: string;
+interface BlogsPageProps {
+  blogs: BlogMeta[];
 }
 
-export default function BlogsPage() {
-  const blogs: Blog[] = blogsData.blogs;
+export default function BlogsPage({ blogs }: BlogsPageProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
@@ -101,7 +93,7 @@ export default function BlogsPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
               {filteredBlogs.map((blog, index) => (
                 <div
-                  key={blog.id}
+                  key={blog.slug}
                   className="glass-effect rounded-xl overflow-hidden hover-lift transition-all group"
                   style={{
                     animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
@@ -204,3 +196,11 @@ export default function BlogsPage() {
     </Layout>
   );
 }
+
+export const getStaticProps: GetStaticProps<BlogsPageProps> = async () => {
+  return {
+    props: {
+      blogs: getAllBlogs(),
+    },
+  };
+};
