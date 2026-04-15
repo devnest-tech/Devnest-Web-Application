@@ -26,6 +26,15 @@ const upcomingEvents: Array<{
 const pastEvents = [
 	{
 		id: 1,
+		title: "DataDash",
+		date: "April 10, 2026",
+		attendees: "100+",
+		highlight: "A data-focused innovation challenge where students transformed insights into impact through analytics, creativity, and practical problem-solving.",
+		icon: "📊",
+		link: "/events/datadash",
+	},
+	{
+		id: 2,
 		title: "Promptathon in Yuva Kaushal",
 		date: "February 25, 2026",
 		attendees: "68",
@@ -34,7 +43,7 @@ const pastEvents = [
 		link: "/events/promptathon-2026",
 	},
 	{
-		id: 2,
+		id: 3,
 		title: "Guest Speaker Event",
 		date: "February 5, 2026",
 		attendees: "150+",
